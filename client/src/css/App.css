@@ -1,0 +1,122 @@
+.banner {
+  position: absolute top;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  object-position: 50% 46%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.pageOutlet {
+  position: relative;
+  width: 50%;
+  padding: 2em;
+  margin: 50px auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.pageOutlet,
+.pageOutlet:before,
+.pageOutlet:after {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.1), 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+.pageOutlet:before,
+.pageOutlet:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: rotateZ(2.5deg);
+  -o-transform: rotate(2.5deg);
+  transform: rotateZ(2.5deg);
+  z-index: -1;
+}
+
+.pageOutlet:after {
+  -webkit-transform: rotateZ(-2.5deg);
+  -o-transform: rotate(-2.5deg);
+  transform: rotateZ(-2.5deg);
+}
+
+.tabsAndButtons {
+  display: flex;
+  flex-direction: row;
+  background-color: #9acd32;
+  justify-content: space-evenly;
+  padding: 0.3cm;
+  margin: 0.5cm;
+  border-color: aqua;
+}
+
+.text {
+  position: relative;
+  background-color: aliceblue;
+  border-radius: 0.5cm;
+  border-style: dotted;
+  padding: 1cm;
+  border: 1cm;
+  margin: 2cm;
+  font-size: 20px;
+  border-color: yellow;
+  border-width: 0.1cm;
+}
+
+.textAndButton {
+  display: flex;
+  flex-direction: column;
+}
+.navBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: white;
+  opacity: 0.7;
+  overflow: auto;
+  border-radius: 10px;
+  padding: 0.3cm;
+  box-shadow: 0px 0px 10px;
+}
+.navBar:hover {
+  opacity: 1;
+  background-color: grey;
+}
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  padding: 16px 16px;
+  background-color: white;
+  border-radius: 10px;
+  max-width: 10cm;
+  margin-inline: auto;
+  margin-top: 2cm;
+}
+
+.idPassCard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  padding: 20px 16px;
+  background-color: yellowgreen;
+  margin: 0.3cm;
+  border-radius: 10px;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: yellowgreen;
+  text-align: center;
+}
+.news {
+  display: flex;
+  flex-direction: row;
+  overflow: scroll;
+}
