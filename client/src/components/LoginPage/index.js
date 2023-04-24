@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import "../css/App.css";
-import News from "./News";
+
 function LoginPage({ Login, error }) {
   const [details, setDetails] = useState({ userId: "", password: "" });
 
@@ -11,7 +10,7 @@ function LoginPage({ Login, error }) {
   return (
     <form onSubmit={submitHandler}>
       <div className="loginForm">
-        <News />
+       
         <label className="idPassCard" htmlFor="userId">
           User ID:
           <input

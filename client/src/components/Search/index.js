@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/App.css";
+
 function Search(){
     return(
         <div className="pageOutlet">

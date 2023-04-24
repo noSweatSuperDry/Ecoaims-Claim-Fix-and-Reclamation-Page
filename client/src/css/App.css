@@ -1,11 +1,3 @@
-.banner {
-  position: absolute top;
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  object-position: 50% 46%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
 
 .pageOutlet {
   position: relative;

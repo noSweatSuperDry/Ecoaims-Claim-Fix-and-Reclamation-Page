@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
-import Claim from "./Claim";
-import Reclamation from "./Reclamation";
-import Search from "./Search";
-import "../css/App.css";
-import LoginPage from "./LoginPage";
+import Claim from "../Claim";
+import Reclamation from "../Reclamation";
+import Search from "../Search";
+import LoginPage from "../LoginPage";
 
 function Home() {
   const adminUser = {
