@@ -1,15 +1,18 @@
 {
-  "name": "server",
+  "name": "ecoaimsservice",
   "version": "1.0.0",
   "description": "server_ecoaims_fix",
-  "main": "config.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "devStart": "nodemon index.js"
   },
   "author": "Zahid Abdullah",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
-    "mysql": "^2.18.1"
+    "mongoose": "^7.0.4",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.22"
   }
 }
