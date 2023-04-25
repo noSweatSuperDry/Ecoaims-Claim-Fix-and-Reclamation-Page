@@ -46,7 +46,7 @@ const productsSchema = new mongoose.Schema({
         required: false
     },
     causeKnown:{
-        type: Boolean,
+        type: String,
         required: true
     },
     whatIsTheCause:{
