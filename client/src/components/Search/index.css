@@ -1,41 +1,41 @@
 .productCard {
-    border-width: 1px;
-    border-color: brown;
-    border-radius: 0.2cm;
-    background-color: yellowgreen;
-    padding: 0.2cm;
-    margin: 0.2cm;
-    display: flex;
-    flex-direction: column;
+  border-width: 1px;
+  border-color: brown;
+  border-radius: 0.2cm;
+  background-color: yellowgreen;
+  padding: 0.2cm;
+  margin: 0.2cm;
+  display: flex;
+  flex-direction: column;
 
-    flex-wrap: wrap;
-    height: 300px;
-    width: 500px;
-    /* Set a fixed height for the container */
+  flex-wrap: wrap;
+  height: 300px;
+  width: 600px;
+  /* Set a fixed height for the container */
 }
 .productCardEdit {
-    border-width: 1px;
-    border-color: brown;
-    border-radius: 0.2cm;
-    background-color: yellowgreen;
-    padding: 0.2cm;
-    margin: 0.2cm;
-    display: flex;
-    flex-direction: column;
+  border-width: 1px;
+  border-color: brown;
+  border-radius: 0.2cm;
+  background-color: yellowgreen;
+  padding: 0.2cm;
+  margin: 0.2cm;
+  display: flex;
+  flex-direction: column;
 
-    flex-wrap: wrap;
-    height: fit-content;
-    width: fit-content;
-    /* Set a fixed height for the container */
+  flex-wrap: wrap;
+  height: 300px;
+  width: 600px;
+  /* Set a fixed height for the container */
 }
 .title {
-    font-weight: bold;
-    font-size:small;
-    margin: .2px;
+  font-weight: bold;
+  font-size: small;
+  margin: 1.5px;
 }
 
 .data {
-    width: fit-content;
-    font-size: small;
-    margin: .2px;
+  width: fit-content;
+  font-size: small;
+  margin: 1.5px;
 }

@@ -1,18 +1,17 @@
-import React, { useState } from 'react'
-
-
+import React, { useState } from "react";
+import "./index.css";
 function SearchBox() {
-    
-
   return (
-    <div><h2>Search</h2>
-    <label>Please insert Lemonsoft ID or Serial Number to search a package: </label>
-    <input autoFocus type="text/Number"></input>
-    <br />
-    <button className="idPassCard">Search</button>
-   
+    <div>
+      <h2 className="searchbox">Search</h2>
+      <label className="searchbox">Please insert Lemonsoft ID: </label>
+      <br />
+      <input autoFocus type="text/Number" className="searchbox"></input>
+      <br />
+
+      <button className="idPassCard">Search</button>
     </div>
-  )
+  );
 }
 
-export default SearchBox
+export default SearchBox;
