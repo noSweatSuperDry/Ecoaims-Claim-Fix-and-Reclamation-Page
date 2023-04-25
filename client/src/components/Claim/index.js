@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Axios from "axios";
 
 function Claim() {
     const [productInfo, setProductInfo] = useState({});
@@ -13,8 +13,7 @@ function Claim() {
     };
 
     const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log(productInfo);
+        Axios.post('http://localhost:3001/insert', {productInfo: productInfo});
     };
 
 
