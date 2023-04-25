@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import './index.css'
-import ListItem from "./ListItem";
-import SearchBox from "./SearchBox";
+
 import ToggleButton from "./ToggleButton";
+
 function Search() {
     const [productList, setProductList] = useState([]);
     const [newProductName, setNewProductName]=useState("");
@@ -19,8 +19,9 @@ const updateProductName =(id)=>{
 }
 
     return (
-        <div className="pageOutlet">
+        <div className="pageOutlet" style={{flexDirection:'row'}}>
             <ToggleButton productList={productList} />
+            
         </div>
     )
 }

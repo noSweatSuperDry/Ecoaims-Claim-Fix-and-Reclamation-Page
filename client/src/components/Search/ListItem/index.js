@@ -1,8 +1,10 @@
 import React from 'react'
 import '../index.css'
+import EditButton from '../EditButton'
+
 function ListItem({productList}) {
   return (
-  <div>  
+  <div>  <h1>List of Claimed/Fixed/Internal Reclaimed Products</h1>
             {productList.map((val, key) => {
                 return <div key={key} className="productCard">
                     <p className="title">Product Name: </p> <p className="data">{val.productName} </p>
@@ -22,8 +24,7 @@ function ListItem({productList}) {
                     <p className="title">Message To Customer: </p> <p className="data">{val.whatMsgToCustomer} </p>
                     <p className="title">Components Used In Repair: </p> <p className="data">{val.componentsUsedInRepair} </p>
                     <p className="title">Repairer Name: </p> <p className="data">{val.userName} </p>
-                    {/* <input type="text" placeholder={val.productName}  onChange={(event)=>{setNewProductName(event.target.value) }}/>
-                    <button onClick={()=> updateProductName(val._id)}>Update Name</button> */}
+                    <EditButton productList={productList} />
                     </div>
             })}</div>
   )
