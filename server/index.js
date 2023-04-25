@@ -14,7 +14,7 @@ mongoose.connect('mongodb+srv://ecoaims:ySzvu0q1wnvzvDLn@ecoaims-service.qbgb1ep
 }).catch(err => console.log(err));
 
 // POST
-ecoaimsService.post('/INSERT', async (req, res) => {
+ecoaimsService.post('/CREATE', async (req, res) => {
    const productName = req.body.productInfo.productName;
    const productSerialNumber = req.body.productInfo.productSerialNumber;
    const issueDate = req.body.productInfo.issueDate;
@@ -72,6 +72,42 @@ ecoaimsService.get('/READ', async (req, res) => {
       res.status(500).send('Internal server error');
    }
 });
+
+
+// UPDATE
+ecoaimsService.put('/UPDATE', async (req, res) => {
+   const newProductName = req.body.productName;
+   const id = req.body.id;
+  /* const productSerialNumber = req.body.productInfo.productSerialNumber;
+   const issueDate = req.body.productInfo.issueDate;
+   const repairDate = req.body.productInfo.repairDate;
+   const manufacturingDate = req.body.productInfo.manufacturingDate;
+   const pcbModelNo = req.body.productInfo.pcbModelNo;
+   const laserSerialNumber = req.body.productInfo.laserSerialNumber;
+   const lemonSoftIssueNumber = req.body.productInfo.lemonSoftIssueNumber;
+   const country = req.body.productInfo.country;
+   const reportByCustomer = req.body.productInfo.reportByCustomer;
+   const reportByEcoaims = req.body.productInfo.reportByEcoaims;
+   const causeKnown = req.body.productInfo.causeKnown;
+   const whatIsTheCause = req.body.productInfo.whatIsTheCause;
+   const Conclusion = req.body.productInfo.Conclusion;
+   const whatMsgToCustomer = req.body.productInfo.whatMsgToCustomer;
+   const componentsUsedInRepair = req.body.productInfo.componentsUsedInRepair;
+   const userName = req.body.productInfo.userName;*/
+
+   
+
+   try {
+      const updatedProduct = await productModel.findById(id);
+      updatedProduct.productName = newProductName;
+      await updatedProduct.save();
+      res.send("UPDATE");
+    } catch (err) {
+      console.log(err);
+      res.status(500).send('Internal server error');
+    }
+});
+
 
 ecoaimsService.listen(3001, () => {
    console.log('Server running on port 3001');
