@@ -1,17 +1,16 @@
-
 .footer {
-   padding-right: 1px;
-    margin: 9px;
-    width: 100%;
-    background-color: black;
-    color: yellowgreen;
-    text-align: center;
-  }
+  padding-right: 1px;
+  margin: 9px;
+  width: 100%;
+  background-color: black;
+  color: yellowgreen;
+  text-align: center;
+}
 
-  h1{
-    font-size: large;
-  }
+h1 {
+  font-size: large;
+}
 
-  p{
-    font-size: smaller;
-  }
+p {
+  font-size: smaller;
+}
