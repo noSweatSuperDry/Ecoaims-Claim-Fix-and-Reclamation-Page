@@ -10,7 +10,6 @@ function LoginPage({ Login, error }) {
   return (
     <form onSubmit={submitHandler}>
       <div className="loginForm">
-       
         <label className="idPassCard" htmlFor="userId">
           User ID:
           <input
@@ -33,7 +32,12 @@ function LoginPage({ Login, error }) {
             value={details.password}
           />
         </label>
-        <input className="idPassCard" type="submit" value="Sign In" />
+        <input
+          style={{ fontWeight: "bolder" }}
+          className="idPassCard"
+          type="submit"
+          value="Sign In"
+        />
       </div>
     </form>
   );

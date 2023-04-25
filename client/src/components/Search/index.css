@@ -9,8 +9,8 @@
   flex-direction: column;
 
   flex-wrap: wrap;
-  height: 300px;
-  width: 600px;
+  height: 400px;
+  width: 90vh;
   /* Set a fixed height for the container */
 }
 .productCardEdit {
@@ -36,6 +36,7 @@
 
 .data {
   width: fit-content;
+  height: 25px;
   font-size: small;
   margin: 1.5px;
 }
