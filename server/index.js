@@ -1,37 +1,56 @@
 const express = require('express');
 const mongoose = require('mongoose');
+var cors = require('cors')
 const ecoaimsService = express()
 
 
 const productModel = require('./models/products')
 
 
-ecoaimsService.use(express.json())
-
+ecoaimsService.use(express.json());
+ecoaimsService.use(cors());
 
  mongoose.connect('mongodb+srv://ecoaims:ySzvu0q1wnvzvDLn@ecoaims-service.qbgb1ep.mongodb.net/ecoaims-service-database?retryWrites=true&w=majority',{
     useNewUrlParser: true,
  } 
 )
-ecoaimsService.get('/', async (req, res)=>{
+ecoaimsService.post('/insert', async (req, res)=>{
+
+   const productName = req.body.productInfo.productName
+   const productSerialNumber = req.body.productInfo.productSerialNumber
+   const issueDate = req.body.productInfo.issueDate
+   const repairDate = req.body.productInfo.repairDate
+   const manufacturingDate = req.body.productInfo.manufacturingDate
+   const pcbModelNo = req.body.productInfo.pcbModelNo
+   const laserSerialNumber = req.body.productInfo.laserSerialNumber
+   const lemonSoftIssueNumber = req.body.productInfo.lemonSoftIssueNumber
+   const country = req.body.productInfo.country
+   const reportByCustomer = req.body.productInfo.reportByCustomer
+   const reportByEcoaims = req.body.productInfo.reportByEcoaims
+   const causeKnown = req.body.productInfo.causeKnown
+   const whatIsTheCause = req.body.productInfo.whatIsTheCause
+   const Conclusion = req.body.productInfo.Conclusion
+   const whatMsgToCustomer = req.body.productInfo.whatMsgToCustomer
+   const componentsUsedInRepair = req.body.productInfo.productName
+   const userName = req.body.productInfo.userName
      const product = new productModel({
-     productName:"LT600 Pro",
-     productSerialNumber:"15282198612",
-     issueDate:"12-10-2022",
-     repairDate:"12-1-2023",
-     manufacturingDate:"4-6-2000",
-     pcbModelNo:"HTX 228972",
-     laserSerialNumber:"PB1124",
-     lemonSoftIssueNumber:"30040023",
-     country:"FI",
-     reportByCustomer:"Laser not working properly",
-     reportByEcoaims:"Laser module broken",
-     causeKnown:true,
-     whatIsTheCause:"broken laser lense",
-     Conclusion:"changed",
-     whatMsgToCustomer:"Your device is fixed",
-     componentsUsedInRepair:"laser PCS",
-     userName:"Zahid Abdullah",})
+     productName:productName,
+     productSerialNumber:productSerialNumber,
+     issueDate:issueDate,
+     repairDate:repairDate,
+     manufacturingDate:manufacturingDate,
+     pcbModelNo:pcbModelNo,
+     laserSerialNumber:laserSerialNumber,
+     lemonSoftIssueNumber:lemonSoftIssueNumber,
+     country:country,
+     reportByCustomer:reportByCustomer,
+     reportByEcoaims:reportByEcoaims,
+     causeKnown:causeKnown,
+     whatIsTheCause:whatIsTheCause,
+     Conclusion:Conclusion,
+     whatMsgToCustomer:whatMsgToCustomer,
+     componentsUsedInRepair:componentsUsedInRepair,
+     userName:userName,})
      try{
         await product.save()
 
