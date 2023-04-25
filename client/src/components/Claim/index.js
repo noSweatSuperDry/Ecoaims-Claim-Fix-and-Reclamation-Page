@@ -13,7 +13,7 @@ function Claim() {
     };
 
     const handleSubmit = (event) => {
-        Axios.post('http://localhost:3001/insert', {productInfo: productInfo});
+        Axios.post('http://localhost:3001/INSERT', {productInfo: productInfo});
         
     };
 
