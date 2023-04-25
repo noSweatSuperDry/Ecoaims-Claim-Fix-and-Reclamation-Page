@@ -47,19 +47,16 @@ function Home() {
             </h2>
             <div className="navBar">
               <NavLink to="/">
-                <button className="tabsAndButtons">Claims and Fixes</button>
+                <button className="idPassCard">Claims and Fixes</button>
               </NavLink>
               <NavLink to="/reclamation">
-                <button className="tabsAndButtons">
-                  {" "}
-                  Internal Reclamations
-                </button>
+                <button className="idPassCard"> Internal Reclamations</button>
               </NavLink>
               <NavLink to="/search">
-                <button className="tabsAndButtons"> Search</button>
+                <button className="idPassCard"> Search</button>
               </NavLink>
               <NavLink to="/">
-                <button className="tabsAndButtons" onClick={Logout}>
+                <button className="idPassCard" onClick={Logout}>
                   Logout
                 </button>
               </NavLink>

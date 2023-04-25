@@ -1,6 +1,7 @@
 .footer {
-  padding-right: 1px;
-  margin: 9px;
+  position: relative;
+  bottom: 0;
+  left: 0;
   width: 100%;
   background-color: black;
   color: yellowgreen;
@@ -9,6 +10,7 @@
 
 h1 {
   font-size: large;
+  margin: auto;
 }
 
 p {
