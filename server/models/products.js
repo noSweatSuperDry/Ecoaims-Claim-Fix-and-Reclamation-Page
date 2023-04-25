@@ -43,11 +43,11 @@ const productsSchema = new mongoose.Schema({
     },
     reportByEcoaims:{
         type: String,
-        required: false
+        required: true
     },
     causeKnown:{
         type: String,
-        required: true
+        required: false
     },
     whatIsTheCause:{
         type: String,
