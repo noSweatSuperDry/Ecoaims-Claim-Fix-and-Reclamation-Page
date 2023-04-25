@@ -14,6 +14,7 @@ function Claim() {
 
     const handleSubmit = (event) => {
         Axios.post('http://localhost:3001/insert', {productInfo: productInfo});
+        
     };
 
 
