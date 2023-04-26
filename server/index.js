@@ -66,8 +66,9 @@ ecoaimsService.post("/CREATE", async (req, res) => {
     res.status(500).send("Internal server error");
   }
 });
+//
 
-// READ
+// READ WORKING
 ecoaimsService.get("/READ", async (req, res) => {
   try {
     const result = await productModel.find({});
@@ -77,11 +78,12 @@ ecoaimsService.get("/READ", async (req, res) => {
     res.status(500).send("Internal server error");
   }
 });
+//
 
-//READ ONE
+//READ ONE WORKING
 ecoaimsService.get("/READ/:id", async (req, res) => {
   try {
-    const product = await products.findOne({
+    const product = await productModel.find({
       lemonSoftIssueNumber: req.params.id,
     });
     if (product) {
@@ -96,40 +98,8 @@ ecoaimsService.get("/READ/:id", async (req, res) => {
 });
 
 // UPDATE
-ecoaimsService.put("/products/:id", async (req, res) => {
-  const updatedProduct = {
-    productName: req.body.productUpdate.productName,
-    productSerialNumber: req.body.productUpdate.productSerialNumber,
-    issueDate: req.body.productUpdate.issueDate,
-    repairDate: req.body.productUpdate.repairDate,
-    manufacturingDate: req.body.productUpdate.manufacturingDate,
-    pcbModelNo: req.body.productUpdate.pcbModelNo,
-    laserSerialNumber: req.body.productUpdate.laserSerialNumber,
-    lemonSoftIssueNumber: req.body.productUpdate.lemonSoftIssueNumber,
-    country: req.body.productUpdate.country,
-    reportByCustomer: req.body.productUpdate.reportByCustomer,
-    reportByEcoaims: req.body.productUpdate.reportByEcoaims,
-    causeKnown: req.body.productUpdate.causeKnown,
-    whatIsTheCause: req.body.productUpdate.whatIsTheCause,
-    Conclusion: req.body.productUpdate.Conclusion,
-    whatMsgToCustomer: req.body.productUpdate.whatMsgToCustomer,
-    componentsUsedInRepair: req.body.productUpdate.componentsUsedInRepair,
-    userName: req.body.productUpdate.userName,
-  };
 
-  try {
-    const updated = await productModel.updateOne(
-      { _id: req.params.id },
-      updatedProduct
-    );
-    res.status(200).send("Product updated successfully");
-  } catch (err) {
-    console.log(err);
-    res.status(500).send("Internal server error");
-  }
-});
-
-//DELETE
+//DELETE WORKING
 
 ecoaimsService.delete("/products/:id", async (req, res) => {
   const id = req.params.id;
