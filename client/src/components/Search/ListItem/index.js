@@ -5,15 +5,14 @@ import Axios from "axios";
 function ListItem({ productList }) {
   const [isToggled, setIsToggled] = useState(true);
   const [productUpdated, setProductUpdated] = useState({});
-  const [productId, setProductId] = useState(null); // new state variable
 
   const handleToggle = () => {
     setIsToggled(!isToggled);
     console.log(isToggled);
   };
-  const updateProductName = () => {
-    Axios.put("http://localhost:3001/UPDATE", {
-      id: productId, // use the productId state variable here
+  const updateProductName = (id) => {
+    Axios.put(`http://localhost:3001/update/${id}`, {
+      id: id, // use the productId state variable here
       productUpdate: productUpdated,
     })
       .then(() => {
@@ -32,17 +31,13 @@ function ListItem({ productList }) {
     }));
   };
 
-  // update the productId state variable when the button is clicked
-  const handleUpdateClick = (id) => {
-    setProductId(id);
-    updateProductName();
-  };
+  //Delete Handler Function
   const handleDelete = (id) => {
     Axios.delete(`http://localhost:3001/products/${id}`)
       .then((response) => {
         console.log(response.data);
         // Do something after successful deletion, such as updating state or displaying a message to the user
-        alert("Data Delted");
+        alert("Product Listing Deleted!");
       })
       .catch((error) => {
         console.error(error);
@@ -282,7 +277,10 @@ function ListItem({ productList }) {
             <button onClick={handleToggle} className="idPassCard">
               {!isToggled ? "Cancel Editing" : "Edit"}
             </button>
-            <button className="idPassCard" onClick={handleUpdateClick}>
+            <button
+              className="idPassCard"
+              onClick={() => updateProductName(val._id)}
+            >
               Update
             </button>
             <button

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import Axios from "axios";
 import ListItem from "../ListItem";
 
 function SearchBox() {
@@ -13,16 +13,15 @@ function SearchBox() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios
-      .get(`/products/${id}`)
+    Axios.get(`http://localhost:3001/READ/${id}`)
       .then((response) => {
         setProduct(response.data);
-        setError(null);
       })
       .catch((error) => {
         setProduct(null);
         setError(error.response.data);
       });
+    console.log(error);
   };
 
   return (

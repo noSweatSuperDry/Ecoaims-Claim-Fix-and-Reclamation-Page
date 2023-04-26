@@ -20,8 +20,8 @@ function Claim() {
     <div className="pageOutlet">
       <h2>Report Claims and Fixes Here.</h2>
       <p>
-        Please fill up the forms carefully. In case you made mistakes, please
-        edit or delete and re-entry
+        Please fill up the forms carefully. Orange fields are mendatory field.
+        In case you made mistakes, please edit or delete and re-entry
       </p>
 
       <div className="textAndButton">
