@@ -1,25 +1,22 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const ecoaimsService = express();
-
+const ecoaimsServiceApp = express();
+require("dotenv").config();
 const productModel = require("./models/products");
 
-ecoaimsService.use(express.json());
-ecoaimsService.use(cors());
-
+ecoaimsServiceApp.use(express.json());
+ecoaimsServiceApp.use(cors());
+const uri = process.env.MONGODB_URI;
 mongoose
-  .connect(
-    "mongodb+srv://ecoaims:ySzvu0q1wnvzvDLn@ecoaims-service.qbgb1ep.mongodb.net/ecoaims-service-database?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .catch((err) => console.log(err));
-
+const connection = mongoose.connection;
+connection.once("open", () => {
+  console.log("Mongdb database initiated and connected successfully");
+});
 // POST
-ecoaimsService.post("/CREATE", async (req, res) => {
+ecoaimsServiceApp.post("/CREATE", async (req, res) => {
   const productName = req.body.productInfo.productName;
   const productSerialNumber = req.body.productInfo.productSerialNumber;
   const issueDate = req.body.productInfo.issueDate;
@@ -69,7 +66,7 @@ ecoaimsService.post("/CREATE", async (req, res) => {
 //
 
 // READ WORKING
-ecoaimsService.get("/READ", async (req, res) => {
+ecoaimsServiceApp.get("/READ", async (req, res) => {
   try {
     const result = await productModel.find({});
     res.status(200).send(result);
@@ -81,7 +78,7 @@ ecoaimsService.get("/READ", async (req, res) => {
 //
 
 //READ ONE WORKING
-ecoaimsService.get("/READ/:id", async (req, res) => {
+ecoaimsServiceApp.get("/READ/:id", async (req, res) => {
   try {
     const product = await productModel.find({
       lemonSoftIssueNumber: req.params.id,
@@ -98,14 +95,42 @@ ecoaimsService.get("/READ/:id", async (req, res) => {
 });
 
 // UPDATE
-
+ecoaimsServiceApp.put("/update/:id", async (req, res) => {
+  const productUpdates = req.body.newProductUpdate;
+  const id = req.body.id;
+  try {
+    productModel.findByIdAndUpdate(id, (productUpdates) => {
+      productUpdates.productName = productUpdates.productName;
+      productUpdates.productSerialNumber = productUpdates.productSerialNumber;
+      productUpdates.issueDate = productUpdates.issueDate;
+      productUpdates.repairDate = productUpdates.repairDate;
+      productUpdates.manufacturingDate = productUpdates.manufacturingDate;
+      productUpdates.pcbModelNo = productUpdates.pcbModelNo;
+      productUpdates.laserSerialNumber = productUpdates.laserSerialNumber;
+      productUpdates.lemonSoftIssueNumber = productUpdates.lemonSoftIssueNumber;
+      productUpdates.country = productUpdates.country;
+      productUpdates.reportByCustomer = productUpdates.reportByCustomer;
+      productUpdates.reportByEcoaims = productUpdates.reportByEcoaims;
+      productUpdates.causeKnown = productUpdates.causeKnown;
+      productUpdates.whatIsTheCause = productUpdates.whatIsTheCause;
+      productUpdates.Conclusion = productUpdates.Conclusion;
+      productUpdates.productName = productUpdates.productName;
+      productUpdates.whatMsgToCustomer = productUpdates.whatMsgToCustomer;
+      productUpdates.componentsUsedInRepair =
+        productUpdates.componentsUsedInRepair;
+      productUpdates.userName = productUpdates.userName;
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
 //DELETE WORKING
 
-ecoaimsService.delete("/products/:id", async (req, res) => {
+ecoaimsServiceApp.delete("/products/:id", async (req, res) => {
   const id = req.params.id;
 
   try {
-    const deletedProduct = await productModel.findByIdAndRemove(id).exec();
+    const deletedProduct = await productModel.findById(id).exec();
 
     if (!deletedProduct) {
       return res.status(404).send("Product not found");
@@ -118,6 +143,6 @@ ecoaimsService.delete("/products/:id", async (req, res) => {
   }
 });
 
-ecoaimsService.listen(3001, () => {
+ecoaimsServiceApp.listen(3001, () => {
   console.log("Server running on port 3001");
 });
