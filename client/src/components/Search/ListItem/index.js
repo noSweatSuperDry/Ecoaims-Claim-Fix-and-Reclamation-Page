@@ -13,7 +13,7 @@ function ListItem({ productList }) {
   const updateProductName = (id) => {
     Axios.put(`http://localhost:3001/update/${id}`, {
       id: id, // use the productId state variable here
-      productUpdate: productUpdated,
+      newProductUpdate: productUpdated,
     })
       .then(() => {
         console.log("Product name updated successfully with" + productUpdated);
