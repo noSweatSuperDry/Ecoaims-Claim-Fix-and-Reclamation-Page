@@ -1,75 +1,77 @@
 const mongoose = require('mongoose');
 const productsSchema = new mongoose.Schema({
-    
-    productName:{
+
+    productName: {
         type: String,
         required: true
     },
-    productSerialNumber:{
+    productSerialNumber: {
         type: String,
         required: true
     },
-    issueDate:{
+    issueDate: {
         type: String,
         required: true
     },
-    repairDate:{
+    repairDate: {
         type: String,
         required: true
     },
-    manufacturingDate:{
+    manufacturingDate: {
         type: String,
         required: false
     },
-    pcbModelNo:{
+    pcbModelNo: {
         type: String,
         required: false
     },
-    laserSerialNumber:{
+    laserSerialNumber: {
         type: String,
         required: false
     },
-    lemonSoftIssueNumber:{
+    lemonSoftIssueNumber: {
         type: String,
         required: true
     },
-    country:{
+    country: {
         type: String,
         required: true
     },
-    reportByCustomer:{
+    reportByCustomer: {
         type: String,
         required: false
     },
-    reportByEcoaims:{
+    reportByEcoaims: {
         type: String,
         required: true
     },
-    causeKnown:{
+    causeKnown: {
         type: String,
         required: false
     },
-    whatIsTheCause:{
+    whatIsTheCause: {
         type: String,
         required: false
     },
-    Conclusion:{
+    Conclusion: {
         type: String,
         required: false
     },
-    whatMsgToCustomer:{
+    whatMsgToCustomer: {
         type: String,
         required: false
     },
 
-    componentsUsedInRepair:{
+    componentsUsedInRepair: {
         type: String,
         required: true
     },
-    userName:{
+    userName: {
         type: String,
         required: true
     },
+}, {
+    timestamps: true
 
 });
 

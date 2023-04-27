@@ -2,7 +2,7 @@
   "name": "ecoaimsservice",
   "version": "1.0.0",
   "description": "server_ecoaims_fix",
-  "main": "index.js",
+  "main": "config.js",
   "scripts": {
     "start": "node index.js",
     "devStart": "nodemon index.js"

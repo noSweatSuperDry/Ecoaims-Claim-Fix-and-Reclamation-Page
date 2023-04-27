@@ -55,6 +55,10 @@ const reclamationSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+},{
+    timestamps:true
+
+
 });
 
 const reclamation = mongoose.model("reclamation", reclamationSchema);
