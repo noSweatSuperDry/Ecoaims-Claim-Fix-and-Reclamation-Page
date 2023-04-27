@@ -66,24 +66,20 @@ router.route('/:id').get((req,res)=>{
     router.route('/update/:id').post((req,res)=>{
         Reclamation.findById(req.params.id).then(reclamation => {
     
-        reclamation.productName = req.body.productName;
-        reclamation.productSerialNumber = req.body.productSerialNumber;
-        reclamation.issueDate = req.body.issueDate;
-        reclamation.repairDate = req.body.repairDate;
-        reclamation.manufacturingDate = req.body.manufacturingDate;
-        reclamation.pcbModelNo = req.body.pcbModelNo;
-        reclamation.laserSerialNumber = req.body.laserSerialNumber;
-        reclamation.lemonSoftIssueNumber = req.body.lemonSoftIssueNumber;
-        reclamation.country = req.body.country;
-        reclamation.reportByCustomer = req.body.reportByCustomer;
-        reclamation.reportByEcoaims = req.body.reportByEcoaims;
-        reclamation.causeKnown = req.body.causeKnown;
-        reclamation.whatIsTheCause = req.body.whatIsTheCause;
-        reclamation.Conclusion = req.body.Conclusion;
-        reclamation.whatMsgToCustomer = req.body.whatMsgToCustomer;
-        reclamation.componentsUsedInRepair = req.body.componentsUsedInRepair;
-        reclamation.userName = req.body.userName;
-        Reclamation.save()
+            reclamation.issueDate = req.body.issueDate;
+            reclamation.partName = req.body.partName;
+            reclamation.deviceSerialNumber = req.body.deviceSerialNumber;
+            reclamation.howMany = req.body.howMany;
+            reclamation.lemonSoftIssueNumber = req.body.lemonSoftIssueNumber;
+            reclamation.electricalComponentType = req.body.electricalComponentType;
+            reclamation.mechanicalComponentType = req.body.mechanicalComponentType;
+            reclamation.information = req.body.information;
+            reclamation.causeKnownR = req.body.causeKnownR;
+            reclamation.whatIsTheCauseR = req.body.whatIsTheCauseR;
+            reclamation.conclusionR = req.body.conclusionR;
+            reclamation.repairedChangedComponent = req.body.repairedChangedComponent;
+            reclamation.userNameR = req.body.userNameR;
+        reclamation.save()
       .then(()=>res.json('CLAIMS UPDATED'))
         .catch(err=>res.status(400).json('Error' +err))
       })
