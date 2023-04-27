@@ -10,3 +10,4 @@ Plan#1
 3. Notification
 4. Better Login System
 5. Internal Reclamation Design
+6. image https://www.geeksforgeeks.org/upload-and-retrieve-image-on-mongodb-using-mongoose/

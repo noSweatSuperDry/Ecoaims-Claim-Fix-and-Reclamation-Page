@@ -7,10 +7,10 @@
   margin: 0.2cm;
   display: flex;
   flex-direction: column;
-
+  overflow:visible;
   flex-wrap: wrap;
   height: 400px;
-  width: 60vh;
+  width: 100%;
   /* Set a fixed height for the container */
 }
 .productCardEdit {
@@ -22,21 +22,19 @@
   margin: 0.2cm;
   display: flex;
   flex-direction: column;
-
+  overflow:visible;
   flex-wrap: wrap;
-  height: 300px;
-  width: 600px;
+  height: 400px;
+  width: 100%;
   /* Set a fixed height for the container */
 }
 .title {
   font-weight: bold;
-  font-size: small;
   margin: 1.5px;
 }
 
 .data {
-  width: fit-content;
-  height: 25px;
+  width: 125px;
   font-size: small;
   margin: 1.5px;
 }
