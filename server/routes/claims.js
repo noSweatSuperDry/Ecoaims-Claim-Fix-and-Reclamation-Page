@@ -6,6 +6,8 @@ router.route('/').get((req, res)=>{
     Claims.find().then(claims=>req.json(claims)).catch(err=>res.statusCode(400).json('Error: '+ err));
 });
 
+
+//ADD DATA
 router.route('/add').post((req, res)=>{
     const productName = req.body.productName;
     const productSerialNumber = req.body.productSerialNumber;
@@ -45,9 +47,57 @@ router.route('/add').post((req, res)=>{
       userName,
     });
   newClaims.save()
-  .then(()=>res.json('Claims ADDED'))
-  .catch(err=>res.json('Error' +err));
+  .then(()=>res.json('CLAIMS ADDED'))
+  .catch(err=>res.status(400).json('Error' +err));
 
 });
+
+//READ DATA
+router.route('/:id').get((req,res)=>{
+Claims.findById(req.params.id)
+.then(claims=>res.json(claims))
+  .catch(err=>res.status(400).json('Error' +err))
+});
+
+//DELETE DATA
+router.route('/:id').delete((req,res)=>{
+  Claims.findByIdAndDelete(req.params.id)
+  .then(()=>res.json('CLAIMS DELETED'))
+    .catch(err=>res.status(400).json('Error' +err))
+  });
+
+
+
+  //UPDATE DATA
+router.route('/update/:id').post((req,res)=>{
+  Claims.findById(req.params.id)
+  .then(claims => {
+    claims.productName = req.body.productName;
+    claims.productSerialNumber = req.body.productSerialNumber;
+    claims.issueDate = req.body.issueDate;
+    claims.repairDate = req.body.repairDate;
+    claims.manufacturingDate = req.body.manufacturingDate;
+    claims.pcbModelNo = req.body.pcbModelNo;
+    claims.laserSerialNumber = req.body.laserSerialNumber;
+    claims.lemonSoftIssueNumber = req.body.lemonSoftIssueNumber;
+    claims.country = req.body.country;
+    claims.reportByCustomer = req.body.reportByCustomer;
+    claims.reportByEcoaims = req.body.reportByEcoaims;
+    claims.causeKnown = req.body.causeKnown;
+    claims.whatIsTheCause = req.body.whatIsTheCause;
+    claims.Conclusion = req.body.Conclusion;
+    claims.whatMsgToCustomer = req.body.whatMsgToCustomer;
+    claims.componentsUsedInRepair = req.body.componentsUsedInRepair;
+    claims.userName = req.body.userName;
+
+  claims.save()
+  .then(()=>res.json('CLAIMS UPDATED'))
+    .catch(err=>res.status(400).json('Error' +err))
+  })
+
+
+  });
+
+
 
 module.exports =router;
