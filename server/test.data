@@ -1,0 +1,19 @@
+{
+	"productName": "LT 600 SUPER",
+      "productSerialNumber":"1221311",
+      "issueDate":"01-12-2002",
+      "repairDate":"01-12-2002",
+      "manufacturingDate":"01-12-2002",
+      "pcbModelNo":"12121312",
+      "laserSerialNumber":"HT2131",
+      "lemonSoftIssueNumber":"23213123121",
+      "country":"FINLAND",
+      "reportByCustomer":"Laser Broken",
+      "reportByEcoaims":"Production fault",
+      "causeKnown":"YES",
+      "whatIsTheCause":"Brocken",
+      "Conclusion":"Nothing is okay",
+      "whatMsgToCustomer":"Your LT fixed",
+      "componentsUsedInRepair":"LASER MODULE",
+      "userName":"Zahid"
+}
