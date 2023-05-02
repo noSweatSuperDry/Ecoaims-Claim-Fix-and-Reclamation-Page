@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import "../../css/App.css";
-function Register() {
+function Register({ onBackToLogin }) {
   const [username, setUserName] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [userToken, setUserToken] = useState("");
   const [message, setMessage] = useState("");
-  console.log(userToken, username, userPassword);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -99,6 +98,7 @@ function Register() {
             className="idPassCard"
             onClick={() => {
               setMessage("");
+              onBackToLogin();
             }}
           >
             Go back

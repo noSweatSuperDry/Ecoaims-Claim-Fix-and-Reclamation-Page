@@ -2,19 +2,11 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Axios from "axios";
 import "../../css/App.css";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  NavLink,
-  Navigate,
-  Link,
-} from "react-router-dom";
 import Register from "../Register";
-
 export default function LoginPage({ setToken }) {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
+  const [showRegister, setShowRegister] = useState(false);
   console.log(username, password);
   const handleSubmit = async (e) => {
     await Axios.get(`http://localhost:5001/users/${username}/${password}`)
@@ -28,10 +20,23 @@ export default function LoginPage({ setToken }) {
       });
   };
 
+  // new click handler for Register button
+  const handleRegisterClick = () => {
+    setShowRegister(true);
+  };
+
+  const handleBackToLogin = () => {
+    setShowRegister(false);
+  };
+
+  if (showRegister) {
+    return <Register onBackToLogin={handleBackToLogin} />;
+  }
+
   return (
     <div
       style={{
-        backgroundColor: "red",
+        backgroundColor: "whitesmoke",
         justifyContent: "center",
         alignItems: "center",
         width: "fit-content",
@@ -70,14 +75,9 @@ export default function LoginPage({ setToken }) {
       <p className="titleCard" style={{ paddingTop: "1cm" }}>
         New User ? Click "Register" to register as a user.
       </p>
-      <Router>
-        <Link to="/register">
-          <button className="idPassCard">Register</button>
-        </Link>
-        <Routes>
-          <Route path="/register" element={<Register />} />
-        </Routes>
-      </Router>
+      <button className="idPassCard" onClick={handleRegisterClick}>
+        Register
+      </button>
     </div>
   );
 }
