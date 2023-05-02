@@ -1,16 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./css/App.css";
+
 import Banner from "./components/Banner/index";
-import LoginPage from "./components/LoginPage/index";
 import Footer from "./components/Footer";
+import Register from "./components/Register";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <div>
       <Banner />
-      <LoginPage />
+      <Register />
       <Footer />
     </div>
   </React.StrictMode>
