@@ -13,7 +13,7 @@ function SearchBox() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    Axios.get(`http://localhost:3001/READ/${id}`)
+    Axios.get(`http://localhost:5001/claims/${id}`)
       .then((response) => {
         setProduct(response.data);
       })
