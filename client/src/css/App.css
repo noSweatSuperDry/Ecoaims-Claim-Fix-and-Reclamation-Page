@@ -83,7 +83,8 @@
   width: fit-content;
   height: fit-content;
   padding: 1cm;
-  flex-direction: row-reverse;
+  display: flex;
+  flex-direction: column;
 }
 
 .idPassCard {
