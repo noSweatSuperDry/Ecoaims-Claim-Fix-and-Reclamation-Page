@@ -84,12 +84,22 @@ function Register({ onBackToLogin }) {
             />
             Yes, I want to make an account
           </label>
-          <input
+          <button
             style={{ fontWeight: "bolder" }}
             className="idPassCard"
             type="submit"
             value="Register"
-          />
+          >
+            Register
+          </button>
+          <button
+            className="idPassCard"
+            onClick={() => {
+              onBackToLogin();
+            }}
+          >
+            Back To Log In
+          </button>
         </form>
       ) : (
         <div>
