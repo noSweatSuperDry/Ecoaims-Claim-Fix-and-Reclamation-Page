@@ -85,6 +85,8 @@
   padding: 1cm;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .idPassCard {
@@ -96,7 +98,17 @@
   border-radius: 10px;
   width: 200px;
 }
-.idPassCard:hover {
+
+.titleCard {
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: fit-content;
+  margin: auto;
+  margin-bottom: 1cm;
+}
+
+button:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   color: #fff;
   transition: 0.3s;

@@ -94,8 +94,9 @@ function Register() {
         </form>
       ) : (
         <div>
-          <p>{message}</p>
+          <p style={{ fontSize: "20px" }}>{message}</p>
           <button
+            className="idPassCard"
             onClick={() => {
               setMessage("");
             }}

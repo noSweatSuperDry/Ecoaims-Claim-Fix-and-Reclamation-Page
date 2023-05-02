@@ -1,72 +1,88 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import Axios from "axios";
+import "../../css/App.css";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  NavLink,
+  Navigate,
+} from "react-router-dom";
+import Register from "../Register";
 
-function LoginPage({ token }) {
-  const [details, setDetails] = useState({ userId: "", password: "" });
-  console.log(details);
-
-  const submitHandler = async (event) => {
-    event.preventDefault(); // Prevent the default form submission behavior
-    const userId = details.userId;
-    const password = details.password;
-    await Axios.get(`http://localhost:5001/users/${userId}/${password}`) // Send a GET request to the API with the user details
+export default function LoginPage({ setToken }) {
+  const [username, setUserName] = useState();
+  const [password, setPassword] = useState();
+  console.log(username, password);
+  const handleSubmit = async (e) => {
+    await Axios.get(`http://localhost:5001/users/${username}/${password}`)
       .then((response) => {
-        // Handle successful response
-        console.log(response.data);
-        successfulPage();
+        const { userToken } = response.data[0];
+        console.log(userToken);
+        setToken(userToken);
       })
-      .catch((error) => {
-        // Handle error
-        console.error(error);
+      .catch(() => {
+        setToken(null);
       });
   };
 
-  const successfulPage = () => {
-    console.log("PAGE LOAD");
-  };
-  const registerPage = () => {
-    console.log("REGISTER");
-  };
-
   return (
-    <div className="loginForm">
-      <form onSubmit={submitHandler}>
-        <label className="idPassCard" htmlFor="userId">
-          User ID:
+    <div
+      style={{
+        backgroundColor: "white",
+        justifyContent: "center",
+        alignItems: "center",
+        alignContent: "center",
+        width: "fit-content",
+        margin: "auto",
+        padding: "1cm",
+      }}
+    >
+      <h1 className="idPassCard titleCard">
+        Sign In for Submitting Claims or Reclamations <br />
+        You can also view/update/edit/remove them.
+      </h1>
+      <form className="loginForm" onSubmit={handleSubmit}>
+        <label className="idPassCard">
+          Username
           <input
+            placeholder="Enter your user ID"
             type="text"
-            placeholder="Please provide your ID"
-            autoFocus
-            onChange={(e) => setDetails({ ...details, userId: e.target.value })}
+            onChange={(e) => setUserName(e.target.value)}
           />
         </label>
-        <label className="idPassCard" htmlFor="password">
-          Password:
+        <label className="idPassCard">
+          Password
           <input
+            placeholder="Enter your user Password"
             type="password"
-            placeholder="Give your password"
-            onChange={(e) =>
-              setDetails({ ...details, password: e.target.value })
-            }
-            autoFocus
+            onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <input
-          style={{ fontWeight: "bolder" }}
-          className="idPassCard"
-          type="submit"
-          value="Sign In"
-        />
+        <div>
+          <button className="idPassCard" type="submit">
+            Sign In
+          </button>
+        </div>
       </form>{" "}
-      <button
-        style={{ fontWeight: "bolder" }}
-        className="idPassCard"
-        onClick={registerPage}
-      >
-        Register
-      </button>
+      <div>
+        <p style={{ padding: "1cm" }}>
+          New User ? Click "Register" to register as a user.
+        </p>
+        <Router>
+          <Navigate to="/register">
+            <button className="idPassCard">Register</button>
+          </Navigate>
+          <Routes>
+            <Route path="/register" element={<Register />} />
+          </Routes>
+        </Router>
+      </div>
     </div>
   );
 }
 
-export default LoginPage;
+LoginPage.propTypes = {
+  setToken: PropTypes.func.isRequired,
+};

@@ -1,24 +1,18 @@
-import React, { useState } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Register from "./components/Register";
-import "./App.css";
+import React from "react";
+import "./css/App.css";
+import Home from "./components/Home/index";
+import LoginPage from "../src/components/LoginPage/index";
+import useToken from "./components/Auth";
 
 function App() {
-  const [token, setToken] = useState();
+  const { token, setToken } = useToken();
+  if (!token || token === "null") {
+    return <LoginPage setToken={setToken} />;
+  }
 
   return (
     <div className="wrapper">
-      <h1>Application</h1>
-      <BrowserRouter>
-        <Switch>
-          <Route path="/register">
-            <Register />
-          </Route>
-          <Route path="/home">
-            <Home />
-          </Route>
-        </Switch>
-      </BrowserRouter>
+      <Home />
     </div>
   );
 }
