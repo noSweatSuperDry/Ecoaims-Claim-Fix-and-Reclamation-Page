@@ -13,20 +13,19 @@ ecoaimsServiceApp.use(cors());
 //CONNECT MONGODB
 
 const uri = process.env.MONGODB_URI;
-mongoose
-  .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const connection = mongoose.connection;
 connection.once("open", () => {
   console.log("Mongdb database initiated and connected successfully");
 });
 
-const claimRouter = require('./routes/claims');
-const reclamationRouter = require('./routes/reclamation');
-const usersRouter = require('./routes/users');
+const claimRouter = require("./routes/claims");
+const reclamationRouter = require("./routes/reclamation");
+const usersRouter = require("./routes/users");
 
-ecoaimsServiceApp.use('/claims', claimRouter);
-ecoaimsServiceApp.use('/reclamation', reclamationRouter);
-ecoaimsServiceApp.use('/users', usersRouter);
+ecoaimsServiceApp.use("/claims", claimRouter);
+ecoaimsServiceApp.use("/reclamation", reclamationRouter);
+ecoaimsServiceApp.use("/users", usersRouter);
 
 //APP LISTEN PORT
 ecoaimsServiceApp.listen(port, () => {

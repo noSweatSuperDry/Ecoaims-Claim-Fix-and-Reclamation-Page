@@ -8,9 +8,11 @@ function Search() {
   const [productList, setProductList] = useState([]);
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/READ").then((response) => {
-      setProductList(response.data);
-    });
+    Axios.get("http://localhost:5001/claims/")
+      .then((response) => {
+        setProductList(response.data);
+      })
+      .catch((res) => alert(res));
   }, []);
 
   return (
