@@ -58,7 +58,7 @@ function Register() {
     <div>
       {!message ? (
         <form className="loginForm" onSubmit={submitHandler}>
-          <h1>REGISTER USER</h1>
+          <h1 className="idPassCard titleCard">REGISTER USER</h1>
           <label className="idPassCard" htmlFor="userId">
             User ID:
             <input

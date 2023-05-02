@@ -8,6 +8,7 @@ import {
   Route,
   NavLink,
   Navigate,
+  Link,
 } from "react-router-dom";
 import Register from "../Register";
 
@@ -30,17 +31,16 @@ export default function LoginPage({ setToken }) {
   return (
     <div
       style={{
-        backgroundColor: "white",
+        backgroundColor: "red",
         justifyContent: "center",
         alignItems: "center",
-        alignContent: "center",
         width: "fit-content",
         margin: "auto",
         padding: "1cm",
       }}
     >
       <h1 className="idPassCard titleCard">
-        Sign In for Submitting Claims or Reclamations <br />
+        Sign In for Submitting Claims or Reclamations. <br />
         You can also view/update/edit/remove them.
       </h1>
       <form className="loginForm" onSubmit={handleSubmit}>
@@ -65,20 +65,19 @@ export default function LoginPage({ setToken }) {
             Sign In
           </button>
         </div>
-      </form>{" "}
-      <div>
-        <p style={{ padding: "1cm" }}>
-          New User ? Click "Register" to register as a user.
-        </p>
-        <Router>
-          <Navigate to="/register">
-            <button className="idPassCard">Register</button>
-          </Navigate>
-          <Routes>
-            <Route path="/register" element={<Register />} />
-          </Routes>
-        </Router>
-      </div>
+      </form>
+
+      <p className="titleCard" style={{ paddingTop: "1cm" }}>
+        New User ? Click "Register" to register as a user.
+      </p>
+      <Router>
+        <Link to="/register">
+          <button className="idPassCard">Register</button>
+        </Link>
+        <Routes>
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
