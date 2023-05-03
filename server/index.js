@@ -27,6 +27,23 @@ ecoaimsServiceApp.use("/claims", claimRouter);
 ecoaimsServiceApp.use("/reclamation", reclamationRouter);
 ecoaimsServiceApp.use("/users", usersRouter);
 
+
+/*
+this will be used when we need to auto start server
+const { spawn } = require('child_process');
+
+function startApp() {
+  const app = spawn('node', ['index.js']);
+
+  app.on('exit', (code) => {
+    if (code !== 0) {
+      console.log('App crashed. Restarting...');
+      startApp();
+    }
+  });
+}
+*/
+
 //APP LISTEN PORT
 ecoaimsServiceApp.listen(port, () => {
   console.log("Server running on port: " + port);

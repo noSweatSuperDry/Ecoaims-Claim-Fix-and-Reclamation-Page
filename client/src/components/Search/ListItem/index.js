@@ -5,13 +5,13 @@ import Axios from "axios";
 function ListItem({ productList }) {
   const [isToggled, setIsToggled] = useState(true);
   const [productUpdated, setProductUpdated] = useState({});
-
+console.log(productUpdated);
   const handleToggle = () => {
     setIsToggled(!isToggled);
     console.log(isToggled);
   };
   const updateProductName = (id) => {
-    Axios.put(`http://localhost:3001/update/${id}`, {
+    Axios.put(`http://localhost:5001/update/${id}`, {
       id: id, // use the productId state variable here
       newProductUpdate: productUpdated,
     })
@@ -38,6 +38,7 @@ function ListItem({ productList }) {
         console.log(response.data);
         // Do something after successful deletion, such as updating state or displaying a message to the user
         alert("Product Listing Deleted!");
+        window.location.reload();
       })
       .catch((error) => {
         console.error(error);
@@ -60,7 +61,7 @@ function ListItem({ productList }) {
                 placeholder={val.productName}
                 type="text"
                 name="productName"
-                value={val.productName}
+                
                 onChange={handleInputChange}
               />
             )}
@@ -71,7 +72,7 @@ function ListItem({ productList }) {
               <input
                 className="data"
                 placeholder={val.productSerialNumber}
-                value={val.productSerialNumber}
+                
                 type="text"
                 name="productSerialNumber"
                 onChange={handleInputChange}
@@ -85,7 +86,7 @@ function ListItem({ productList }) {
               <input
                 className="data"
                 placeholder={val.issueDate}
-                value={val.issueDate}
+                
                 type="Date"
                 name="issueDate"
                 onChange={handleInputChange}
@@ -98,7 +99,7 @@ function ListItem({ productList }) {
               <input
                 className="data"
                 placeholder={val.repairDate}
-                value={val.repairDate}
+               
                 type="Date"
                 name="repairDate"
                 onChange={handleInputChange}
@@ -111,7 +112,7 @@ function ListItem({ productList }) {
               <input
                 className="data"
                 placeholder={val.manufacturingDate}
-                value={val.manufacturingDate}
+                
                 type="Date"
                 name="manufacturingDate"
                 onChange={handleInputChange}
@@ -124,7 +125,7 @@ function ListItem({ productList }) {
               <input
                 className="data"
                 placeholder={val.pcbModelNo}
-                value={val.pcbModelNo}
+               
                 type="text"
                 name="pcbModelNo"
                 onChange={handleInputChange}
@@ -137,7 +138,7 @@ function ListItem({ productList }) {
               <input
                 className="data"
                 placeholder={val.laserSerialNumber}
-                value={val.laserSerialNumber}
+                
                 type="text"
                 name="laserSerialNumber"
                 onChange={handleInputChange}
@@ -150,7 +151,7 @@ function ListItem({ productList }) {
               <input
                 className="data"
                 placeholder={val.lemonSoftIssueNumber}
-                value={val.lemonSoftIssueNumber}
+              
                 type="text"
                 name="lemonSoftIssueNumber"
                 onChange={handleInputChange}
@@ -163,7 +164,7 @@ function ListItem({ productList }) {
               <input
                 className="data"
                 placeholder={val.country}
-                value={val.country}
+              
                 type="text"
                 name="country"
                 onChange={handleInputChange}
@@ -177,7 +178,7 @@ function ListItem({ productList }) {
               <input
                 className="data"
                 placeholder={val.reportByCustomer}
-                value={val.reportByCustomer}
+            
                 type="text"
                 name="reportByCustomer"
                 onChange={handleInputChange}
@@ -190,7 +191,7 @@ function ListItem({ productList }) {
               <input
                 className="data"
                 placeholder={val.reportByEcoaims}
-                value={val.reportByEcoaims}
+             
                 type="text"
                 name="reportByEcoaims"
                 onChange={handleInputChange}
@@ -203,7 +204,7 @@ function ListItem({ productList }) {
               <input
                 className="data"
                 placeholder={val.causeKnown}
-                value={val.causeKnown}
+              
                 type="text"
                 name="causeKnown"
                 onChange={handleInputChange}
@@ -216,7 +217,7 @@ function ListItem({ productList }) {
               <input
                 className="data"
                 placeholder={val.whatIsTheCause}
-                value={val.whatIsTheCause}
+           
                 type="text"
                 name="whatIsTheCause"
                 onChange={handleInputChange}
@@ -229,7 +230,7 @@ function ListItem({ productList }) {
               <input
                 className="data"
                 placeholder={val.Conclusion}
-                value={val.Conclusion}
+            
                 type="text"
                 name="Conclusion"
                 onChange={handleInputChange}
@@ -242,7 +243,7 @@ function ListItem({ productList }) {
               <input
                 className="data"
                 placeholder={val.whatMsgToCustomer}
-                value={val.whatMsgToCustomer}
+               
                 type="text"
                 name="whatMsgToCustomer"
                 onChange={handleInputChange}
@@ -255,7 +256,7 @@ function ListItem({ productList }) {
               <input
                 className="data"
                 placeholder={val.componentsUsedInRepair}
-                value={val.componentsUsedInRepair}
+               
                 type="text"
                 name="componentsUsedInRepair"
                 onChange={handleInputChange}
@@ -268,7 +269,7 @@ function ListItem({ productList }) {
               <input
                 className="data"
                 placeholder={val.userName}
-                value={val.userName}
+               
                 type="text"
                 name="userName"
                 onChange={handleInputChange}
@@ -284,7 +285,8 @@ function ListItem({ productList }) {
               Save Changes
             </button>)}
             {isToggled && (<button
-              onClick={() => handleDelete(val._id)}
+              onClick={() => handleDelete(val._id)
+              }
               className="idPassCard"
             >
               Delete
