@@ -12,15 +12,19 @@ function Claim() {
     }));
   };
 
-  const handleSubmit = (event) => {
-    Axios.post("http://localhost:3001/CREATE", { productInfo: productInfo });
+  const handleSubmit = async () => {
+    await Axios.post("http://localhost:5001/claims/add", { productInfo: productInfo }).
+    then(()=>{
+      alert("Claim Added To database")
+    }).catch(()=>{
+      alert("Failed! Data merging Failed!")})
   };
 
   return (
     <div className="pageOutlet">
       <h2>Report Claims and Fixes Here.</h2>
       <p>
-        Please fill up the forms carefully. Orange fields are mendatory field.
+        Please fill up the forms carefully. Red bordered fields are mendatory field.
         In case you made mistakes, please edit or delete and re-entry
       </p>
 

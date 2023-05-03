@@ -1,26 +1,25 @@
 const router = require('express').Router();
-const reclamation = require('../models/reclamation.model');
 let Reclamation = require('../models/reclamation.model');
 
 
-router.route('/').get((req, res)=>{
-    Reclamation.find().then(reclamation=>req.json(reclamation)).catch(err=>res.statusCode(400).json('Error: '+ err));
+router.route('/all').get((req, res)=>{
+    Reclamation.find().then(reclamation=>res.json(reclamation)).catch(err=>res.statusCode(400).json('Error: '+ err));
 });
 
 router.route('/add').post((req, res)=>{
-    const issueDate = req.body.issueDate;
-    const partName = req.body.partName;
-    const deviceSerialNumber = req.body.deviceSerialNumber;
-    const howMany = req.body.howMany;
-    const lemonSoftIssueNumber = req.body.lemonSoftIssueNumber;
-    const electricalComponentType = req.body.electricalComponentType;
-    const mechanicalComponentType = req.body.mechanicalComponentType;
-    const information = req.body.information;
-    const causeKnownR = req.body.causeKnownR;
-    const whatIsTheCauseR = req.body.whatIsTheCauseR;
-    const conclusionR = req.body.conclusionR;
-    const repairedChangedComponent = req.body.repairedChangedComponent;
-    const userNameR = req.body.userNameR;
+    const issueDate = req.body.productInfo.issueDate;
+    const partName = req.body.productInfo.partName;
+    const deviceSerialNumber = req.body.productInfo.deviceSerialNumber;
+    const howMany = req.body.productInfo.howMany;
+    const lemonSoftIssueNumber = req.body.productInfo.lemonSoftIssueNumber;
+    const electricalComponentType = req.body.productInfo.electricalComponentType;
+    const mechanicalComponentType = req.body.productInfo.mechanicalComponentType;
+    const information = req.body.productInfo.information;
+    const causeKnownR = req.body.productInfo.causeKnownR;
+    const whatIsTheCauseR = req.body.productInfo.whatIsTheCauseR;
+    const conclusionR = req.body.productInfo.conclusionR;
+    const repairedChangedComponent = req.body.productInfo.repairedChangedComponent;
+    const userNameR = req.body.productInfo.userNameR;
 
   
     const newReclamation = new Reclamation({

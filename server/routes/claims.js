@@ -14,23 +14,24 @@ router.route("/all").get( async (req, res) => {
 
 //ADD DATA
 router.route("/add").post((req, res) => {
-  const productName = req.body.productName;
-  const productSerialNumber = req.body.productSerialNumber;
-  const issueDate = req.body.issueDate;
-  const repairDate = req.body.repairDate;
-  const manufacturingDate = req.body.manufacturingDate;
-  const pcbModelNo = req.body.pcbModelNo;
-  const laserSerialNumber = req.body.laserSerialNumber;
-  const lemonSoftIssueNumber = req.body.lemonSoftIssueNumber;
-  const country = req.body.country;
-  const reportByCustomer = req.body.reportByCustomer;
-  const reportByEcoaims = req.body.reportByEcoaims;
-  const causeKnown = req.body.causeKnown;
-  const whatIsTheCause = req.body.whatIsTheCause;
-  const Conclusion = req.body.Conclusion;
-  const whatMsgToCustomer = req.body.whatMsgToCustomer;
-  const componentsUsedInRepair = req.body.componentsUsedInRepair;
-  const userName = req.body.userName;
+
+  const productName = req.body.productInfo.productName;
+  const productSerialNumber = req.body.productInfo.productSerialNumber;
+  const issueDate = req.body.productInfo.issueDate;
+  const repairDate = req.body.productInfo.repairDate;
+  const manufacturingDate = req.body.productInfo.manufacturingDate;
+  const pcbModelNo = req.body.productInfo.pcbModelNo;
+  const laserSerialNumber = req.body.productInfo.laserSerialNumber;
+  const lemonSoftIssueNumber = req.body.productInfo.lemonSoftIssueNumber;
+  const country = req.body.productInfo.country;
+  const reportByCustomer = req.body.productInfo.reportByCustomer;
+  const reportByEcoaims = req.body.productInfo.reportByEcoaims;
+  const causeKnown = req.body.productInfo.causeKnown;
+  const whatIsTheCause = req.body.productInfo.whatIsTheCause;
+  const Conclusion = req.body.productInfo.Conclusion;
+  const whatMsgToCustomer = req.body.productInfo.whatMsgToCustomer;
+  const componentsUsedInRepair = req.body.productInfo.componentsUsedInRepair;
+  const userName = req.body.productInfo.userName;
 
   const newClaims = new Claims({
     productName,

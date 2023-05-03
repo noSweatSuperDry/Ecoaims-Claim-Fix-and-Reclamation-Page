@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 const reclamationSchema = new mongoose.Schema({
   issueDate: {
     type: String,
-    required: false,
+    required: true,
   },
   partName: {
     type: String,
-    required: false,
+    required: true,
   },
   deviceSerialNumber: {
     type: String,
@@ -15,11 +15,11 @@ const reclamationSchema = new mongoose.Schema({
 
   howMany: {
     type: String,
-    required: false,
+    required: true,
   },
   lemonSoftIssueNumber: {
     type: String,
-    required: false,
+    required: true,
   },
   electricalComponentType: {
     type: String,
@@ -35,7 +35,7 @@ const reclamationSchema = new mongoose.Schema({
   },
 
   causeKnownR: {
-    type: String,
+    type: Boolean,
     required: false,
   },
   whatIsTheCauseR: {
@@ -53,10 +53,10 @@ const reclamationSchema = new mongoose.Schema({
 
   userNameR: {
     type: String,
-    required: false,
+    required: true,
   },
 },{
-    timestamps:false
+    timestamps:true
 
 
 });

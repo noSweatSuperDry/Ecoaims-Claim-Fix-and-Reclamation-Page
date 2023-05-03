@@ -122,5 +122,5 @@ button:hover {
   border-radius: 10px;
 }
 *:required {
-  background-color: yellow;
+ border-color: red;
 }
