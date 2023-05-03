@@ -11,7 +11,7 @@ function Home() {
       <BrowserRouter>
         <h2>Welcome</h2>
         <div className="navBar">
-          <NavLink to="/">
+          <NavLink to="/home">
             <button className="idPassCard">Claims and Fixes</button>
           </NavLink>
           <NavLink to="/reclamation">
@@ -23,7 +23,7 @@ function Home() {
           <LogOut />
         </div>
         <Routes>
-          <Route exact path="/" element={<Claim />} />
+          <Route exact path="/home" element={<Claim />} />
           <Route exact path="/reclamation" element={<Reclamation />} />
           <Route exact path="/search" element={<Search />} />
         </Routes>

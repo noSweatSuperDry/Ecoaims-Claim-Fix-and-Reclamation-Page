@@ -3,7 +3,7 @@ import Axios from "axios";
 
 function Claim() {
   const [productInfo, setProductInfo] = useState({});
-
+  const [success, setSuccess] = useState('');
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setProductInfo((prevProductInfo) => ({
@@ -14,14 +14,16 @@ function Claim() {
 
   const handleSubmit = async () => {
     await Axios.post("http://localhost:5001/claims/add", { productInfo: productInfo }).then(() => {
-      alert("Claim Added To database")
+      setSuccess("sucessfuly Added");
+
     }).catch(() => {
       alert("Failed! Data merging Failed!")
     })
   };
 
   return (
-    <div className="pageOutlet">
+    <div>
+    {!success ? (<div className="pageOutlet">
       <h2>Report Claims and Fixes Here.</h2>
       <p>
         Please fill up the forms carefully. Red bordered fields are mendatory field.
@@ -146,6 +148,9 @@ function Claim() {
           Submit
         </button>
       </div>
+    </div>): (<div className="loginForm pageOutlet" style={{margin:"auto", marginTop:"2cm"}}><h1>Claim Data Added</h1><br/><button className="idPassCard" onClick={()=>{
+      setSuccess("");
+    }}>Add Another</button></div>)}
     </div>
   );
 }

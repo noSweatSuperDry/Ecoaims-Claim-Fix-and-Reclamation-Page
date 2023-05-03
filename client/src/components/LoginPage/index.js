@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import Axios from "axios";
 import "../../css/App.css";
 import Register from "../Register";
+
+
+
 export default function LoginPage({ setToken }) {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
@@ -36,14 +39,7 @@ export default function LoginPage({ setToken }) {
 
   return (
     <div
-      style={{
-        backgroundColor: "whitesmoke",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "fit-content",
-        margin: "auto",
-        padding: "1cm",
-      }}
+      className="pageOutlet"
     >
       <h1 className="idPassCard titleCard">
         Sign In for Submitting Claims or Reclamations. <br />
@@ -53,7 +49,7 @@ export default function LoginPage({ setToken }) {
         <label className="idPassCard">
           Username
           <input
-            placeholder="Enter your user ID"
+            placeholder="Enter User ID"
             type="text"
             onChange={(e) => setUserName(e.target.value)}
           />
@@ -61,7 +57,7 @@ export default function LoginPage({ setToken }) {
         <label className="idPassCard">
           Password
           <input
-            placeholder="Enter your user Password"
+            placeholder="Enter User Password"
             type="password"
             onChange={(e) => setPassword(e.target.value)}
           />

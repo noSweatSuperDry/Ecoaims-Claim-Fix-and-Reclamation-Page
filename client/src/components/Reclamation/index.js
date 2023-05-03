@@ -4,7 +4,8 @@ import Axios from "axios";
 
 function Reclamation() {
   const [reclamationInfo, setReclamationInfo] = useState({});
-console.log(reclamationInfo);
+  console.log(reclamationInfo);
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setReclamationInfo((prevReclamationInfo) => ({
@@ -15,7 +16,8 @@ console.log(reclamationInfo);
 
   const handleSubmit = async () => {
     await Axios.post("http://localhost:5001/reclamation/add", { reclamationInfo: reclamationInfo }).then(() => {
-        alert("Reclamation Added To database")
+      console.log(reclamationInfo);
+        alert("Reclamation Added: " + JSON.stringify(reclamationInfo))
       }).catch(() => {
         alert("Failed! Reclamation Data merging Failed!")
       })
@@ -23,14 +25,14 @@ console.log(reclamationInfo);
 
   return (
     <div className="pageOutlet">
-      <h2>Report Internal Reclamations</h2>
+      <h1>Report Internal Reclamations</h1>
       <p>
         Please fill up the forms carefully. Red bordered fields are mendatory field.
         In case you made mistakes, please edit or delete and re-entry
       </p>
 
       <div className="textAndButton">
-        <label>1. Issue Date:</label>
+        <label>1. Issue Date: </label>
         <input
           type="date"
           name="issueDate"
@@ -89,7 +91,7 @@ console.log(reclamationInfo);
         <br />
         <label>9. Cause is known ? </label>
         <input
-          type="checkbox"
+          type="text"
           name="causeKnownR"
           onChange={handleInputChange}
 
