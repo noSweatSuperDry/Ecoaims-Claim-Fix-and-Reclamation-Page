@@ -13,11 +13,11 @@ function Claim() {
   };
 
   const handleSubmit = async () => {
-    await Axios.post("http://localhost:5001/claims/add", { productInfo: productInfo }).
-    then(()=>{
+    await Axios.post("http://localhost:5001/claims/add", { productInfo: productInfo }).then(() => {
       alert("Claim Added To database")
-    }).catch(()=>{
-      alert("Failed! Data merging Failed!")})
+    }).catch(() => {
+      alert("Failed! Data merging Failed!")
+    })
   };
 
   return (

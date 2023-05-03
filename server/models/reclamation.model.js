@@ -35,7 +35,7 @@ const reclamationSchema = new mongoose.Schema({
   },
 
   causeKnownR: {
-    type: Boolean,
+    type: String,
     required: false,
   },
   whatIsTheCauseR: {

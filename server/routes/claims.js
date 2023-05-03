@@ -2,7 +2,6 @@ const router = require("express").Router();
 let Claims = require("../models/claim.model");
 
 router.route("/all").get( async (req, res) => {
-  Claims.find({})
   try {
     const result = await Claims.find({});
     res.status(200).send(result);
@@ -13,7 +12,7 @@ router.route("/all").get( async (req, res) => {
 });
 
 //ADD DATA
-router.route("/add").post((req, res) => {
+router.route("/add").post(async (req, res) => {
 
   const productName = req.body.productInfo.productName;
   const productSerialNumber = req.body.productInfo.productSerialNumber;
@@ -52,15 +51,15 @@ router.route("/add").post((req, res) => {
     componentsUsedInRepair,
     userName,
   });
-  newClaims
+   await newClaims
     .save()
     .then(() => res.json("CLAIMS ADDED"))
     .catch((err) => res.status(400).json("Error" + err));
 });
 
 //READ DATA
-router.route("/:lemonSoftIssueNumber").get((req, res) => {
-  Claims.find({
+router.route("/:lemonSoftIssueNumber").get(async(req, res) => {
+ await Claims.find({
     lemonSoftIssueNumber: req.params.lemonSoftIssueNumber,
   })
     .then((claims) => res.json(claims))
@@ -68,15 +67,15 @@ router.route("/:lemonSoftIssueNumber").get((req, res) => {
 });
 
 //DELETE DATA
-router.route("/:id").delete((req, res) => {
-  Claims.findByIdAndDelete(req.params.id)
+router.route("/:id").delete(async (req, res) => {
+ await Claims.findByIdAndDelete(req.params.id)
     .then(() => res.json("CLAIMS DELETED"))
     .catch((err) => res.status(400).json("Error" + err));
 });
 
 //UPDATE DATA
-router.route("/update/:id").post((req, res) => {
-  Claims.findById(req.params.id).then((claims) => {
+router.route("/update/:id").post( async (req, res) => {
+ await Claims.findById(req.params.id).then((claims) => {
     claims.productName = req.body.productName;
     claims.productSerialNumber = req.body.productSerialNumber;
     claims.issueDate = req.body.issueDate;

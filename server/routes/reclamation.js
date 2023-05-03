@@ -2,24 +2,31 @@ const router = require('express').Router();
 let Reclamation = require('../models/reclamation.model');
 
 
-router.route('/all').get((req, res)=>{
-    Reclamation.find().then(reclamation=>res.json(reclamation)).catch(err=>res.statusCode(400).json('Error: '+ err));
+router.route('/all').get(async (req, res)=>{
+
+  try {
+    const result = await Reclamation.find({});
+    res.status(200).send(result);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Internal server error");
+  }
 });
 
 router.route('/add').post((req, res)=>{
-    const issueDate = req.body.productInfo.issueDate;
-    const partName = req.body.productInfo.partName;
-    const deviceSerialNumber = req.body.productInfo.deviceSerialNumber;
-    const howMany = req.body.productInfo.howMany;
-    const lemonSoftIssueNumber = req.body.productInfo.lemonSoftIssueNumber;
-    const electricalComponentType = req.body.productInfo.electricalComponentType;
-    const mechanicalComponentType = req.body.productInfo.mechanicalComponentType;
-    const information = req.body.productInfo.information;
-    const causeKnownR = req.body.productInfo.causeKnownR;
-    const whatIsTheCauseR = req.body.productInfo.whatIsTheCauseR;
-    const conclusionR = req.body.productInfo.conclusionR;
-    const repairedChangedComponent = req.body.productInfo.repairedChangedComponent;
-    const userNameR = req.body.productInfo.userNameR;
+    const issueDate = req.body.reclamationInfo.issueDate;
+    const partName = req.body.reclamationInfo.partName;
+    const deviceSerialNumber = req.body.reclamationInfo.deviceSerialNumber;
+    const howMany = req.body.reclamationInfo.howMany;
+    const lemonSoftIssueNumber = req.body.reclamationInfo.lemonSoftIssueNumber;
+    const electricalComponentType = req.body.reclamationInfo.electricalComponentType;
+    const mechanicalComponentType = req.body.reclamationInfo.mechanicalComponentType;
+    const information = req.body.reclamationInfo.information;
+    const causeKnownR = req.body.reclamationInfo.causeKnownR;
+    const whatIsTheCauseR = req.body.reclamationInfo.whatIsTheCauseR;
+    const conclusionR = req.body.reclamationInfo.conclusionR;
+    const repairedChangedComponent = req.body.reclamationInfo.repairedChangedComponent;
+    const userNameR = req.body.reclamationInfo.userNameR;
 
   
     const newReclamation = new Reclamation({

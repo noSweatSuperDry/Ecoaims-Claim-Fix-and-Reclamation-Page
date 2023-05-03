@@ -3,22 +3,22 @@ import Axios from "axios";
 
 
 function Reclamation() {
-  const [productInfo, setProductInfo] = useState({});
-
+  const [reclamationInfo, setReclamationInfo] = useState({});
+console.log(reclamationInfo);
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setProductInfo((prevProductInfo) => ({
-      ...prevProductInfo,
+    setReclamationInfo((prevReclamationInfo) => ({
+      ...prevReclamationInfo,
       [name]: value,
     }));
   };
 
   const handleSubmit = async () => {
-    await Axios.post("http://localhost:5001/reclamation/add", { productInfo: productInfo }).
-    then(()=>{
-      alert("Reclamation Added To database")
-    }).catch(()=>{
-      alert("Failed! Reclamation Data merging Failed!")})
+    await Axios.post("http://localhost:5001/reclamation/add", { reclamationInfo: reclamationInfo }).then(() => {
+        alert("Reclamation Added To database")
+      }).catch(() => {
+        alert("Failed! Reclamation Data merging Failed!")
+      })
   };
 
   return (
@@ -84,7 +84,7 @@ function Reclamation() {
           type="text"
           name="information"
           onChange={handleInputChange}
-        
+
         />
         <br />
         <label>9. Cause is known ? </label>
@@ -92,7 +92,7 @@ function Reclamation() {
           type="checkbox"
           name="causeKnownR"
           onChange={handleInputChange}
-        
+
         />
         <br />
         <label>10. What is the cause ? </label>
@@ -107,7 +107,7 @@ function Reclamation() {
           type="text"
           name="conclusionR"
           onChange={handleInputChange}
-          
+
         />
         <br />
         <label>12. Repaired/Changed components:</label>
