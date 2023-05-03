@@ -6,7 +6,7 @@ function Reclamation() {
   const [reclamationInfo, setReclamationInfo] = useState({});
   console.log(reclamationInfo);
 
-  const handleInputChange = (event) => {
+  const handleInputChangeR = (event) => {
     const { name, value } = event.target;
     setReclamationInfo((prevReclamationInfo) => ({
       ...prevReclamationInfo,
@@ -14,7 +14,7 @@ function Reclamation() {
     }));
   };
 
-  const handleSubmit = async () => {
+  const handleSubmitR = async () => {
     await Axios.post("http://localhost:5001/reclamation/add", { reclamationInfo: reclamationInfo }).then(() => {
       console.log(reclamationInfo);
         alert("Reclamation Added: " + JSON.stringify(reclamationInfo))
@@ -36,7 +36,7 @@ function Reclamation() {
         <input
           type="date"
           name="issueDate"
-          onChange={handleInputChange}
+          onChange={handleInputChangeR}
           required
         />
         <br />
@@ -44,7 +44,7 @@ function Reclamation() {
         <input
           type="text"
           name="partName"
-          onChange={handleInputChange}
+          onChange={handleInputChangeR}
           required
         />
         <br />
@@ -52,14 +52,14 @@ function Reclamation() {
         <input
           type="text"
           name="deviceSerialNumber"
-          onChange={handleInputChange}
+          onChange={handleInputChangeR}
         />
         <br />
         <label>4. How many ?</label>
         <input
           type="number"
           name="howMany"
-          onChange={handleInputChange}
+          onChange={handleInputChangeR}
           required
         />
         <br />
@@ -67,25 +67,25 @@ function Reclamation() {
         <input
           type="number"
           name="lemonSoftIssueNumber"
-          onChange={handleInputChange}
+          onChange={handleInputChangeR}
           required
         />
         <br />
         <label>6. Electrical component type ? </label>
-        <input type="text" name="electricalComponentType" onChange={handleInputChange} />
+        <input type="text" name="electricalComponentType" onChange={handleInputChangeR} />
         <br />
         <label>7. Mechanical component type ? </label>
         <input
           type="text"
           name="mechanicalComponentType"
-          onChange={handleInputChange}
+          onChange={handleInputChangeR}
         />
         <br />
         <label>8. Information: </label>
         <input
           type="text"
           name="information"
-          onChange={handleInputChange}
+          onChange={handleInputChangeR}
 
         />
         <br />
@@ -93,7 +93,7 @@ function Reclamation() {
         <input
           type="text"
           name="causeKnownR"
-          onChange={handleInputChange}
+          onChange={handleInputChangeR}
 
         />
         <br />
@@ -101,30 +101,30 @@ function Reclamation() {
         <input
           type="text"
           name="whatIsTheCauseR"
-          onChange={handleInputChange}
+          onChange={handleInputChangeR}
         />
         <br />
         <label>11. Conclusion ? </label>
         <input
           type="text"
           name="conclusionR"
-          onChange={handleInputChange}
+          onChange={handleInputChangeR}
 
         />
         <br />
         <label>12. Repaired/Changed components:</label>
-        <input type="text" name="repairedChangedComponent" onChange={handleInputChange} />
+        <input type="text" name="repairedChangedComponent" onChange={handleInputChangeR} />
         <br />
         <label>13. Please Write your Name: </label>
         <input
           type="text"
-          name="userName"
-          onChange={handleInputChange}
+          name="userNameR"
+          onChange={handleInputChangeR}
           required
         />
         <br />
         <br />
-        <button className="idPassCard" type="submit" onClick={handleSubmit}>
+        <button className="idPassCard" type="submit" onClick={handleSubmitR}>
           Submit
         </button>
       </div>
