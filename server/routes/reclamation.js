@@ -13,7 +13,7 @@ router.route('/all').get(async (req, res)=>{
   }
 });
 
-router.route('/add').post((req, res)=>{
+router.route('/add').post(async (req, res)=>{
     const issueDate = req.body.reclamationInfo.issueDate;
     const partName = req.body.reclamationInfo.partName;
     const deviceSerialNumber = req.body.reclamationInfo.deviceSerialNumber;
@@ -30,7 +30,6 @@ router.route('/add').post((req, res)=>{
 
   
     const newReclamation = new Reclamation({
-    
       issueDate,
       partName,
       deviceSerialNumber,
@@ -45,7 +44,7 @@ router.route('/add').post((req, res)=>{
       repairedChangedComponent,
       userNameR,
     });
-newReclamation.save()
+await newReclamation.save()
   .then(()=>res.json('Reclamation DATA ADDED'))
   .catch(err=>res.json('Error' +err));
 
