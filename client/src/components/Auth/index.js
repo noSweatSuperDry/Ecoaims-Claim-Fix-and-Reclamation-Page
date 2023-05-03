@@ -2,13 +2,13 @@ import { useState } from "react";
 
 export default function useToken() {
   const isLocalStorageSupported =
-    typeof window !== "undefined" && window.localStorage;
-
+    typeof window !== "undefined" && window.sessionStorage;
+ //we can replace  sessionStorage to localStorage for type of save location
   const getToken = () => {
     if (!isLocalStorageSupported) {
       return null;
     }
-    return localStorage.getItem("token");
+    return sessionStorage.getItem("token");
   };
 
   const [token, setToken] = useState(getToken());
@@ -17,7 +17,7 @@ export default function useToken() {
     if (!isLocalStorageSupported) {
       return;
     }
-    localStorage.setItem("token", JSON.stringify(userToken));
+    sessionStorage.setItem("token", JSON.stringify(userToken));
     setToken(userToken);
   };
 

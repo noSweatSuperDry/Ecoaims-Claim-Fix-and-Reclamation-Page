@@ -6,7 +6,7 @@ import useToken from "./components/Auth";
 
 function App() {
   const { token, setToken } = useToken();
-  if (!token || token === "null") {
+  if (!token) {
     return <LoginPage setToken={setToken} />;
   }
 
