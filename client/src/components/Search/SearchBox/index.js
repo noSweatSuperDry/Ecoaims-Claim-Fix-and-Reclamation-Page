@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Axios from "axios";
+import './index.css';
 import ListItem from "../ListItem";
 
 function SearchBox() {
   const [id, setId] = useState("");
   const [product, setProduct] = useState(null);
-  const [error, setError] = useState(null);
-
+  console.log(product);
   const handleInputChange = (event) => {
     setId(event.target.value);
   };
@@ -16,12 +16,12 @@ function SearchBox() {
     Axios.get(`http://localhost:5001/claims/${id}`)
       .then((response) => {
         setProduct(response.data);
+        console.log("Search by LemonSoft ID Successful");
       })
-      .catch((error) => {
+      .catch(() => {
         setProduct(null);
-        setError(error.response.data);
       });
-    console.log(error);
+    
   };
 
   return (
@@ -32,15 +32,16 @@ function SearchBox() {
         <br />
         <input
           autoFocus
-          type="text"
+          type="number"
           className="searchbox"
+          placeholder="LemonSoft Serial Number"
           value={id}
           onChange={handleInputChange}
         ></input>
         <br />
         <button className="idPassCard">Search</button>
       </form>
-      {product ? <ListItem productList={product} /> : <p>No Data</p>}
+      {product ? <ListItem productList={product} /> : <p>Write LemonSoft Serial No in search box or Press Show All Products.</p>}
     </div>
   );
 }
