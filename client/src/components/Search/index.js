@@ -8,7 +8,7 @@ function Search() {
   const [productList, setProductList] = useState([]);
 
   useEffect(() => {
-    Axios.get("http://localhost:5001/claims/")
+    Axios.get("http://localhost:5001/claims/all")
       .then((response) => {
         setProductList(response.data);
       })

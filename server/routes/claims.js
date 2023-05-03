@@ -1,10 +1,15 @@
 const router = require("express").Router();
 let Claims = require("../models/claim.model");
 
-router.route("/").get((req, res) => {
-  Claims.find()
-    .then((claims) => req.json(claims))
-    .catch((err) => res.statusCode(400).json("Error: " + err));
+router.route("/all").get( async (req, res) => {
+  Claims.find({})
+  try {
+    const result = await Claims.find({});
+    res.status(200).send(result);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Internal server error");
+  }
 });
 
 //ADD DATA
