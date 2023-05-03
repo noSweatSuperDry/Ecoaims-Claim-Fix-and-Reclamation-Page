@@ -33,7 +33,7 @@ function ListItem({ productList }) {
 
   //Delete Handler Function
   const handleDelete = (id) => {
-    Axios.delete(`http://localhost:3001/products/${id}`)
+    Axios.delete(`http://localhost:5001/claims/${id}`)
       .then((response) => {
         console.log(response.data);
         // Do something after successful deletion, such as updating state or displaying a message to the user
@@ -275,20 +275,20 @@ function ListItem({ productList }) {
               />
             )}
             <button onClick={handleToggle} className="idPassCard">
-              {!isToggled ? "Cancel Editing" : "Edit"}
+              {!isToggled ? "Cancel Edit" : "Edit"}
             </button>
-            <button
+            {!isToggled && (<button
               className="idPassCard"
               onClick={() => updateProductName(val._id)}
             >
-              Update
-            </button>
-            <button
+              Save Changes
+            </button>)}
+            {isToggled && (<button
               onClick={() => handleDelete(val._id)}
               className="idPassCard"
             >
               Delete
-            </button>
+            </button>)}
           </div>
         );
       })}
