@@ -11,12 +11,14 @@ console.log(productUpdated);
     console.log(isToggled);
   };
   const updateProductName = (id) => {
-    Axios.put(`http://localhost:5001/update/${id}`, {
+    Axios.put(`http://localhost:5001/claims/update/${id}`, {
       id: id, // use the productId state variable here
-      newProductUpdate: productUpdated,
+      productName: productUpdated.productName,
+      productSerialNumber: productUpdated.productSerialNumber,
+      issueDate: productUpdated.issueDate
     })
       .then(() => {
-        console.log("Product name updated successfully with" + productUpdated);
+        console.log("Product name updated successfully with" + JSON.stringify(productUpdated));
       })
       .catch((error) => {
         console.error("Error updating product name:", error);
@@ -58,7 +60,7 @@ console.log(productUpdated);
             ) : (
               <input
                 className="data"
-                placeholder={val.productName}
+                defaultValue={val.productName}
                 type="text"
                 name="productName"
                 
@@ -71,7 +73,7 @@ console.log(productUpdated);
             ) : (
               <input
                 className="data"
-                placeholder={val.productSerialNumber}
+                defaultValue={val.productSerialNumber}
                 
                 type="text"
                 name="productSerialNumber"
@@ -85,7 +87,7 @@ console.log(productUpdated);
             ) : (
               <input
                 className="data"
-                placeholder={val.issueDate}
+                defaultValue={val.issueDate}
                 
                 type="Date"
                 name="issueDate"
@@ -98,7 +100,7 @@ console.log(productUpdated);
             ) : (
               <input
                 className="data"
-                placeholder={val.repairDate}
+                defaultValue={val.repairDate}
                
                 type="Date"
                 name="repairDate"
@@ -111,7 +113,7 @@ console.log(productUpdated);
             ) : (
               <input
                 className="data"
-                placeholder={val.manufacturingDate}
+                defaultValue={val.manufacturingDate}
                 
                 type="Date"
                 name="manufacturingDate"
@@ -124,7 +126,7 @@ console.log(productUpdated);
             ) : (
               <input
                 className="data"
-                placeholder={val.pcbModelNo}
+                defaultValue={val.pcbModelNo}
                
                 type="text"
                 name="pcbModelNo"
@@ -137,7 +139,7 @@ console.log(productUpdated);
             ) : (
               <input
                 className="data"
-                placeholder={val.laserSerialNumber}
+                defaultValue={val.laserSerialNumber}
                 
                 type="text"
                 name="laserSerialNumber"
@@ -150,7 +152,7 @@ console.log(productUpdated);
             ) : (
               <input
                 className="data"
-                placeholder={val.lemonSoftIssueNumber}
+                defaultValue={val.lemonSoftIssueNumber}
               
                 type="text"
                 name="lemonSoftIssueNumber"
@@ -163,7 +165,7 @@ console.log(productUpdated);
             ) : (
               <input
                 className="data"
-                placeholder={val.country}
+                defaultValue={val.country}
               
                 type="text"
                 name="country"
@@ -177,7 +179,7 @@ console.log(productUpdated);
             ) : (
               <input
                 className="data"
-                placeholder={val.reportByCustomer}
+                defaultValue={val.reportByCustomer}
             
                 type="text"
                 name="reportByCustomer"
@@ -190,7 +192,7 @@ console.log(productUpdated);
             ) : (
               <input
                 className="data"
-                placeholder={val.reportByEcoaims}
+                defaultValue={val.reportByEcoaims}
              
                 type="text"
                 name="reportByEcoaims"
@@ -203,7 +205,7 @@ console.log(productUpdated);
             ) : (
               <input
                 className="data"
-                placeholder={val.causeKnown}
+                defaultValue={val.causeKnown}
               
                 type="text"
                 name="causeKnown"
@@ -216,7 +218,7 @@ console.log(productUpdated);
             ) : (
               <input
                 className="data"
-                placeholder={val.whatIsTheCause}
+                defaultValue={val.whatIsTheCause}
            
                 type="text"
                 name="whatIsTheCause"
@@ -229,7 +231,7 @@ console.log(productUpdated);
             ) : (
               <input
                 className="data"
-                placeholder={val.Conclusion}
+                defaultValue={val.Conclusion}
             
                 type="text"
                 name="Conclusion"
@@ -242,7 +244,7 @@ console.log(productUpdated);
             ) : (
               <input
                 className="data"
-                placeholder={val.whatMsgToCustomer}
+                defaultValue={val.whatMsgToCustomer}
                
                 type="text"
                 name="whatMsgToCustomer"
@@ -255,7 +257,7 @@ console.log(productUpdated);
             ) : (
               <input
                 className="data"
-                placeholder={val.componentsUsedInRepair}
+                defaultValue={val.componentsUsedInRepair}
                
                 type="text"
                 name="componentsUsedInRepair"
@@ -268,7 +270,7 @@ console.log(productUpdated);
             ) : (
               <input
                 className="data"
-                placeholder={val.userName}
+                defaultValue={val.userName}
                
                 type="text"
                 name="userName"
