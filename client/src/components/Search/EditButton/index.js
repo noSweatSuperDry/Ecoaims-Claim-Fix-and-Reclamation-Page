@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 
-function EditButton({ productList }) {
+function EditButton() {
   const [isToggled, setIsToggled] = useState(true);
 
   const handleToggle = () => {

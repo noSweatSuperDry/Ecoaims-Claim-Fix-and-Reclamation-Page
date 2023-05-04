@@ -4,7 +4,7 @@ import Claim from "../Claim";
 import Reclamation from "../Reclamation";
 import Search from "../Search";
 import LogOut from "../LogOut";
-
+import EditPage from "../Search/EditPage";
 function Home() {
   return (
     <div>
@@ -26,6 +26,7 @@ function Home() {
           <Route exact path="/" element={<Claim />} />
           <Route exact path="/reclamation" element={<Reclamation />} />
           <Route exact path="/search" element={<Search />} />
+          <Route path="/edit" component={EditPage} />
         </Routes>
       </BrowserRouter>
     </div>
