@@ -1,0 +1,40 @@
+.productCard {
+  border-width: 1px;
+  border-color: brown;
+  border-radius: 0.2cm;
+  background-color: yellowgreen;
+  padding: 0.2cm;
+  margin: 0.2cm;
+  display: flex;
+  flex-direction: column;
+  overflow:visible;
+  flex-wrap: wrap;
+  height: 400px;
+  width: 100%;
+  /* Set a fixed height for the container */
+}
+.productCardEdit {
+  border-width: 1px;
+  border-color: brown;
+  border-radius: 0.2cm;
+  background-color: yellowgreen;
+  padding: 0.2cm;
+  margin: 0.2cm;
+  display: flex;
+  flex-direction: column;
+  overflow:visible;
+  flex-wrap: wrap;
+  height: 400px;
+  width: 100%;
+  /* Set a fixed height for the container */
+}
+.title {
+  font-weight: bold;
+  margin: 1.5px;
+}
+
+.data {
+  width: 125px;
+  font-size: small;
+  margin: 1.5px;
+}

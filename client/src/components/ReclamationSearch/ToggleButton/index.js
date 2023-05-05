@@ -3,7 +3,7 @@ import SearchBox from '../SearchBox';
 import ListItem from '../ListItem';
 function ToggleButton({productList}) {
     const [isToggled, setIsToggled] = useState(true);
-    
+
     const handleToggle = () => {
       setIsToggled(!isToggled);
    
@@ -13,9 +13,9 @@ function ToggleButton({productList}) {
     return (
       <div>
         <button onClick={handleToggle}  className="idPassCard">
-          {isToggled ? 'Show All Claims' : 'Search Claims DataBase by Lemonsoft ID'}
+          {isToggled ? 'Show All Reclamations' : 'Search Reclamation DataBase by Lemonsoft ID'}
         </button>
-       
+     
         {!isToggled ?(<ListItem productList={productList} />):(<SearchBox/>)}
       </div>
     );

@@ -281,7 +281,7 @@ console.log(productUpdated);
               {!isToggled ? "Cancel Edit" : "Edit"}
             </button>
             {!isToggled && (<button
-              className="idPassCard smallButton"
+              className="idPassCard"
               onClick={() => updateProductName(val._id)}
             >
               Save Changes
@@ -289,7 +289,7 @@ console.log(productUpdated);
             {isToggled && (<button
               onClick={() => handleDelete(val._id)
               }
-              className="idPassCard smallButton"
+              className="idPassCard"
             >
               Delete
             </button>)}

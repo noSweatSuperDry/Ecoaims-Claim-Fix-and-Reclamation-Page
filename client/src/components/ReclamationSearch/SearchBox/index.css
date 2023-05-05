@@ -1,0 +1,8 @@
+.searchbox {
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0.51cm;
+  padding-left: -1cm;
+  width: 200px;
+  height: 1cm;
+}
