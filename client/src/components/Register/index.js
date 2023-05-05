@@ -2,121 +2,78 @@ import React, { useState } from "react";
 import Axios from "axios";
 import "../../css/App.css";
 function Register({ onBackToLogin }) {
-  const [username, setUserName] = useState("");
-  const [userPassword, setUserPassword] = useState("");
-  const [userToken, setUserToken] = useState("");
-  const [message, setMessage] = useState("");
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
-    await Axios.post("http://localhost:5001/users/add", {
-      username: username,
-      userPassword: userPassword,
-      userToken: userToken,
-    })
-      .then(() => {
-        setMessage(`User ID ${username} registered`);
+    const [userCredential, setUserCredential] = useState({});
+    const [success, setSuccess] = useState('');
+    console.log(userCredential);
+    const handleInputChange = (event) => {
+      const { name, value } = event.target;
+      setUserCredential((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    };
+
+  
+    const handleSubmit = async () => {
+      await Axios.post("http://localhost:5001/users/add", { userCredential: userCredential }).then(() => {
+        setSuccess("sucessfuly Added");
+  
+      }).catch(() => {
+        alert("Failed!")
       })
-      .catch(() =>
-        setMessage(
-          `${username} has been taken already. Register with another ID`
-        )
-      );
-  };
+    };
+  
+    return (
+      <div>
+      {!success ? (<div className="pageOutlet">
+        <h2>Report Claims and Fixes Here.</h2>
+        <p>
+         Register your user ID. Remember! You should provide your Email address to Register.
+        </p>
+  
+        <div className="textAndButton">
+          <label>User ID (maximum 8 chars/minimum 3 chars): </label>
+          <input
+            type="text"
+            name="username"
+            onChange={handleInputChange}
+            required
+          />
+          <br />
+          <label>Set a new password: </label>
+          <input
+            type="text"
+            name="userPassword"
+            onChange={handleInputChange}
+            required
+          />
+          <br />
+          <label>Email address: </label>
+          <input
+            type="email"
+            name="userEmail"
+            onChange={handleInputChange}
+            required
+          />
+          <br />
 
-  const generateString = (length) => {
-    const characters =
-      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    const charactersLength = characters.length;
-    let result = "";
-    for (let i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  };
-
-  const generateUniqueString = (len) => {
-    let str;
-    do {
-      str = generateString(len);
-    } while (new Set([userToken]).has(str));
-    return str;
-  };
-
-  const handleCheckboxChange = (e) => {
-    if (e.target.checked) {
-      const newToken = generateUniqueString(32);
-      console.log(newToken);
-      setUserToken(newToken);
-    } else {
-      setUserToken("");
-    }
-  };
-
-  return (
-    <div>
-      {!message ? (
-        <form className="loginForm" onSubmit={submitHandler}>
-          <h1 className="idPassCard titleCard">REGISTER USER</h1>
-          <label className="idPassCard" htmlFor="userId">
-            User ID:
-            <input
-              type="text"
-              placeholder="Please provide your User Name"
-              autoFocus
-              width={window.width}
-              onChange={(e) => setUserName(e.target.value)}
-            />
-          </label>
-          <label className="idPassCard" htmlFor="password">
-            Password:
-            <input
-              type="password"
-              placeholder="Please provide your User Password"
-              onChange={(e) => setUserPassword(e.target.value)}
-            />
-          </label>
-          <label className="idPassCard" htmlFor="checkbox">
-            <input
-              type="checkbox"
-              onChange={handleCheckboxChange}
-              value="Yes, I want to make an account"
-            />
-            Yes, I want to make an account
-          </label>
-          <button
-            style={{ fontWeight: "bolder" }}
-            className="idPassCard"
-            type="submit"
-            value="Register"
-          >
-            Register
-          </button>
-          <button
-            className="idPassCard"
-            onClick={() => {
-              onBackToLogin();
-            }}
-          >
-            Back To Log In
-          </button>
-        </form>
-      ) : (
-        <div>
-          <p style={{ fontSize: "20px" }}>{message}</p>
-          <button
-            className="idPassCard"
-            onClick={() => {
-              setMessage("");
-              onBackToLogin();
-            }}
-          >
-            Go back
+          <input type="checkbox" id="terms-checkbox" required/>
+<label for="terms-checkbox">Yes, I agree to send my information and register in Ecoaims Assembly Database.</label>
+        
+          <br />
+         
+          <button className="idPassCard" type="submit" onClick={handleSubmit}>
+            Submit
           </button>
         </div>
-      )}
-    </div>
-  );
-}
-
-export default Register;
+      </div>): (<div className="loginForm pageOutlet" style={{margin:"auto", marginTop:"2cm"}}><h1>UserID: {userCredential.username} Added</h1><br/><button className="idPassCard" onClick={()=>{
+        setSuccess("");
+      }}>Add Another</button></div>)}
+      <button className="idPassCard" onClick={onBackToLogin}>Back</button>
+      </div>
+    );
+  }
+  
+  export default Register;
+  

@@ -10,9 +10,9 @@ export default function LoginPage({ setToken }) {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
   const [showRegister, setShowRegister] = useState(false);
-  console.log(username, password);
+  
   const handleSubmit = async (e) => {
-    e.preventDefault();
+
     await Axios.get(`http://localhost:5001/users/${username}/${password}`)
       .then((response) => {
         const { userToken } = response.data[0];
