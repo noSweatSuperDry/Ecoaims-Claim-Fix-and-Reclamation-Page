@@ -9,6 +9,7 @@ const userSchema = new Schema(
       unique: true,
       trim: true,
       minlength: 3,
+      maxlength: 10
     },
     userPassword: {
       type: String,
@@ -21,15 +22,9 @@ const userSchema = new Schema(
       required: true,
       trim: true,
       minlength: 3,
-      
+
     },
-    userToken: {
-      type: String,
-      required: true,
-      trim: true,
-      minlength: 32,
-      
-    },
+
   },
   {
     timestamps: true,
