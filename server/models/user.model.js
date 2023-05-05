@@ -16,12 +16,19 @@ const userSchema = new Schema(
       trim: true,
       minlength: 3,
     },
+    userEmail: {
+      type: String,
+      required: true,
+      trim: true,
+      minlength: 3,
+      
+    },
     userToken: {
       type: String,
       required: true,
       trim: true,
       minlength: 32,
-      unique: true,
+      
     },
   },
   {
