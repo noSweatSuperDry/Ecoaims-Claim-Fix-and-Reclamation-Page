@@ -7,20 +7,32 @@ import Register from "../Register";
 
 
 export default function LoginPage({ setToken }) {
-  const [username, setUserName] = useState();
-  const [password, setPassword] = useState();
+
   const [showRegister, setShowRegister] = useState(false);
+  const [userCredential, setUserCredential] = useState({});
+
+const username = JSON.stringify(userCredential.username);
+
+const password = JSON.stringify(userCredential.password);
+console.log(username, password);
   
-  const handleSubmit = async (e) => {
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUserCredential((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async () => {
 
     await Axios.get(`http://localhost:5001/users/${username}/${password}`)
       .then((response) => {
-        const { userToken } = response.data[0];
-        console.log(userToken);
-        setToken(userToken);
+        
+        console.log(response.data);
       })
       .catch(() => {
-        setToken(null);
+       console.log("Write correct id");
       });
   };
 
@@ -50,8 +62,9 @@ export default function LoginPage({ setToken }) {
           Username
           <input
             placeholder="Enter User ID"
+            name="username"
             type="text"
-            onChange={(e) => setUserName(e.target.value)}
+            onChange={handleInputChange}
           />
         </label>
         <label className="idPassCard">
@@ -59,7 +72,8 @@ export default function LoginPage({ setToken }) {
           <input
             placeholder="Enter User Password"
             type="password"
-            onChange={(e) => setPassword(e.target.value)}
+            name="password"
+            onChange={handleInputChange}
           />
         </label>
         <div>
