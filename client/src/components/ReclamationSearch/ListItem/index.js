@@ -35,7 +35,7 @@ console.log(productUpdated);
 
   //Delete Handler Function
   const handleDelete = (id) => {
-    Axios.delete(`http://localhost:5001/claims/${id}`)
+    Axios.delete(`http://localhost:5001/reclamation/${id}`)
       .then((response) => {
         console.log(response.data);
         // Do something after successful deletion, such as updating state or displaying a message to the user

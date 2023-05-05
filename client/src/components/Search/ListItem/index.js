@@ -279,7 +279,9 @@ console.log(productUpdated);
             </button>
             {!isToggled && (<button
               className="idPassCard"
-              onClick={() => handleUpdateProduct(val._id)}
+              onClick={() => {handleUpdateProduct(val._id);
+              setIsToggled(true);
+              }}
             >
               Save Changes
             </button>)}

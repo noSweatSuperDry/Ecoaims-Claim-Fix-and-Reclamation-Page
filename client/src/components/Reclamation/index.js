@@ -4,8 +4,7 @@ import Axios from "axios";
 
 function Reclamation() {
   const [reclamationInfo, setReclamationInfo] = useState({});
-  console.log(reclamationInfo);
-
+  const [success, setSuccess] = useState('');
   const handleInputChangeR = (event) => {
     const { name, value } = event.target;
     setReclamationInfo((prevReclamationInfo) => ({
@@ -14,17 +13,19 @@ function Reclamation() {
     }));
   };
 
+  
   const handleSubmitR = async () => {
     await Axios.post("http://localhost:5001/reclamation/add", { reclamationInfo: reclamationInfo }).then(() => {
-      console.log(reclamationInfo);
-        alert("Reclamation Added: " + JSON.stringify(reclamationInfo))
+      setSuccess("sucessfuly Added");
       }).catch(() => {
         alert("Failed! Reclamation Data merging Failed!")
       })
   };
 
   return (
-    <div className="pageOutlet">
+    <div>
+    {!success ? 
+    (<div className="pageOutlet">
       <h1>Report Internal Reclamations</h1>
       <p>
         Please fill up the forms carefully. Red bordered fields are mendatory field.
@@ -128,6 +129,9 @@ function Reclamation() {
           Submit
         </button>
       </div>
+    </div>): (<div className="loginForm pageOutlet" style={{margin:"auto", marginTop:"2cm"}}><h1>Reclamation Data Added</h1><br/><button className="idPassCard" onClick={()=>{
+      setSuccess("");
+    }}>Add Another</button></div>)}
     </div>
   );
 }
