@@ -5,23 +5,20 @@ import Axios from "axios";
 function ListItem({ productList }) {
   const [isToggled, setIsToggled] = useState(true);
   const [productUpdated, setProductUpdated] = useState({});
+console.log(productList);
 console.log(productUpdated);
   const handleToggle = () => {
     setIsToggled(!isToggled);
     console.log(isToggled);
   };
-  const updateProductName = (id) => {
-    Axios.put(`http://localhost:5001/claims/update/${id}`, {
-      id: id, // use the productId state variable here
-      productName: productUpdated.productName,
-      productSerialNumber: productUpdated.productSerialNumber,
-      issueDate: productUpdated.issueDate
-    })
-      .then(() => {
-        console.log("Product name updated successfully with" + JSON.stringify(productUpdated));
+  const handleUpdateProduct =async (id) => {
+   await Axios
+      .put(`http://localhost:5001/claims/update/${id}`, {productUpdated})
+      .then((response) => {
+        console.log(response.data);
       })
       .catch((error) => {
-        console.error("Error updating product name:", error);
+        console.error("Error updating :"+error);
       });
   };
 
@@ -281,15 +278,15 @@ console.log(productUpdated);
               {!isToggled ? "Cancel Edit" : "Edit"}
             </button>
             {!isToggled && (<button
-              className="idPassCard smallButton"
-              onClick={() => updateProductName(val._id)}
+              className="idPassCard"
+              onClick={() => handleUpdateProduct(val._id)}
             >
               Save Changes
             </button>)}
             {isToggled && (<button
               onClick={() => handleDelete(val._id)
               }
-              className="idPassCard smallButton"
+              className="idPassCard"
             >
               Delete
             </button>)}

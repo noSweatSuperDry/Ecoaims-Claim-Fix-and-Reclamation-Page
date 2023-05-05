@@ -74,31 +74,15 @@ router.route("/:id").delete(async (req, res) => {
 });
 
 //UPDATE DATA
-router.route("/update/:id").post( async (req, res) => {
- await Claims.findById(req.params.id).then((claims) => {
-    claims.productName = req.body.productName;
-    claims.productSerialNumber = req.body.productSerialNumber;
-    claims.issueDate = req.body.issueDate;
-    claims.repairDate = req.body.repairDate;
-    claims.manufacturingDate = req.body.manufacturingDate;
-    claims.pcbModelNo = req.body.pcbModelNo;
-    claims.laserSerialNumber = req.body.laserSerialNumber;
-    claims.lemonSoftIssueNumber = req.body.lemonSoftIssueNumber;
-    claims.country = req.body.country;
-    claims.reportByCustomer = req.body.reportByCustomer;
-    claims.reportByEcoaims = req.body.reportByEcoaims;
-    claims.causeKnown = req.body.causeKnown;
-    claims.whatIsTheCause = req.body.whatIsTheCause;
-    claims.Conclusion = req.body.Conclusion;
-    claims.whatMsgToCustomer = req.body.whatMsgToCustomer;
-    claims.componentsUsedInRepair = req.body.componentsUsedInRepair;
-    claims.userName = req.body.userName;
-
-    claims
-      .save()
-      .then(() => res.json("CLAIMS UPDATED"))
-      .catch((err) => res.status(400).json("Error" + err));
-  });
-});
+router.route("/update/:id").put( async (req, res) => {
+ try{
+  const productListId = req.params.id;
+  const productList = await Claims.findOneAndUpdate({_id: productListId}, req.body.productUpdated,{new:true});
+  console.log(productList);
+  res.json({productList});
+ }
+ catch(e){
+  res.status(400).json({error:"Backend wrong"});
+}});
 
 module.exports = router;
