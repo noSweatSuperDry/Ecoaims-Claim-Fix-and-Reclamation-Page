@@ -5,8 +5,7 @@ import Axios from "axios";
 function ListItem({ productList }) {
   const [isToggled, setIsToggled] = useState(true);
   const [productUpdated, setProductUpdated] = useState({});
-  console.log(productList);
-  console.log(productUpdated);
+
   const handleToggle = () => {
     setIsToggled(!isToggled);
     console.log(isToggled);

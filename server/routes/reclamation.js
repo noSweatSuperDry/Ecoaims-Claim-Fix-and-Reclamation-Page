@@ -74,7 +74,6 @@ router.route("/update/:id").put(async (req, res) => {
       { new: true }
     );
     res.json({ productList });
-    console.log(productList);
   } catch (e) {
     res.status(400).json({ error: "Backend wrong" });
   }
