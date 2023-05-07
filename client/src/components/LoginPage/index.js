@@ -4,18 +4,15 @@ import Axios from "axios";
 import "../../css/App.css";
 import Register from "../Register";
 
-
-
 export default function LoginPage({ setToken }) {
-
   const [showRegister, setShowRegister] = useState(false);
   const [userCredential, setUserCredential] = useState({});
 
-const username = JSON.stringify(userCredential.username);
+  const username = JSON.stringify(userCredential.username);
 
-const password = JSON.stringify(userCredential.password);
-console.log(username, password);
-  
+  const password = JSON.stringify(userCredential.password);
+  console.log(username, password);
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserCredential((prevData) => ({
@@ -24,15 +21,29 @@ console.log(username, password);
     }));
   };
 
-  const handleSubmit = async () => {
-
-    await Axios.get(`http://localhost:5001/users/${username}/${password}`)
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await Axios.get(
+      `http://localhost:5001/users/${userCredential.username}/${userCredential.password}`
+    )
       .then((response) => {
-        
-        console.log(response.data);
+        const inputString = response.data[0]._id;
+        const inputArray = inputString.split("");
+
+        // The Fisher-Yates shuffle algorithm
+        for (let i = inputArray.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [inputArray[i], inputArray[j]] = [inputArray[j], inputArray[i]];
+        }
+
+        // Convert the shuffled array back to a string
+        const token = inputArray.join("");
+
+        setToken(token);
+        console.log(token);
       })
-      .catch(() => {
-       console.log("Write correct id");
+      .catch((error) => {
+        console.log("Error: " + error);
       });
   };
 
@@ -50,9 +61,7 @@ console.log(username, password);
   }
 
   return (
-    <div
-      className="pageOutlet"
-    >
+    <div className="pageOutlet">
       <h1 className="idPassCard titleCard">
         Sign In for Submitting Claims or Reclamations. <br />
         You can also view/update/edit/remove them.
