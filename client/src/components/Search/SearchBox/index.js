@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import './index.css';
+import "./index.css";
 import ListItem from "../ListItem";
 
 function SearchBox() {
@@ -21,14 +21,15 @@ function SearchBox() {
       .catch(() => {
         setProduct(null);
       });
-    
   };
 
   return (
     <div>
       <h1 className="searchbox">Search</h1>
       <form onSubmit={handleSubmit}>
-        <label className="searchbox">Please insert Lemonsoft ID: </label>
+        <label className="searchbox">
+          Please insert Lemonsoft Serial Number:{" "}
+        </label>
         <br />
         <input
           autoFocus
@@ -41,7 +42,14 @@ function SearchBox() {
         <br />
         <button className="idPassCard">Search</button>
       </form>
-      {product ? <ListItem productList={product} /> : <p>Write LemonSoft Serial No in search box or Press Show All Products.</p>}
+      {product ? (
+        <ListItem productList={product} />
+      ) : (
+        <p>
+          Write LemonSoft Serial Number in search box or Press "Show All Claims"
+          button.
+        </p>
+      )}
     </div>
   );
 }

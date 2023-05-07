@@ -44,8 +44,8 @@ function SearchBox() {
         <ListItem productList={product} />
       ) : (
         <p>
-          Write LemonSoft Serial Number in search box or Press Show All
-          Products.
+          Write LemonSoft Serial Number in search box or Press "Show All
+          Reclamations".
         </p>
       )}
     </div>
