@@ -11,7 +11,7 @@ function Search() {
   }, []);
 
   async function getData() {
-    await Axios.get("http://localhost:5001/claims/all")
+    await Axios.get("http://localhost:5001/reclamation/all")
       .then((response) => {
         setProductList(response.data);
       })
