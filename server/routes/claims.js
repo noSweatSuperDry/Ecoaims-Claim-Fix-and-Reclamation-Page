@@ -1,7 +1,7 @@
 const router = require("express").Router();
 let Claims = require("../models/claim.model");
 
-router.route("/all").get( async (req, res) => {
+router.route("/all").get(async (req, res) => {
   try {
     const result = await Claims.find({});
     res.status(200).send(result);
@@ -13,7 +13,6 @@ router.route("/all").get( async (req, res) => {
 
 //ADD DATA
 router.route("/add").post(async (req, res) => {
-
   const productName = req.body.productInfo.productName;
   const productSerialNumber = req.body.productInfo.productSerialNumber;
   const issueDate = req.body.productInfo.issueDate;
@@ -51,15 +50,15 @@ router.route("/add").post(async (req, res) => {
     componentsUsedInRepair,
     userName,
   });
-   await newClaims
+  await newClaims
     .save()
     .then(() => res.json("CLAIMS ADDED"))
     .catch((err) => res.status(400).json("Error" + err));
 });
 
-//READ DATA
-router.route("/:lemonSoftIssueNumber").get(async(req, res) => {
- await Claims.find({
+//READ DATA BY ID
+router.route("/:lemonSoftIssueNumber").get(async (req, res) => {
+  await Claims.find({
     lemonSoftIssueNumber: req.params.lemonSoftIssueNumber,
   })
     .then((claims) => res.json(claims))
@@ -68,21 +67,25 @@ router.route("/:lemonSoftIssueNumber").get(async(req, res) => {
 
 //DELETE DATA
 router.route("/:id").delete(async (req, res) => {
- await Claims.findByIdAndDelete(req.params.id)
+  await Claims.findByIdAndDelete(req.params.id)
     .then(() => res.json("CLAIMS DELETED"))
     .catch((err) => res.status(400).json("Error" + err));
 });
 
 //UPDATE DATA
-router.route("/update/:id").put( async (req, res) => {
- try{
-  const productListId = req.params.id;
-  const productList = await Claims.findOneAndUpdate({_id: productListId}, req.body.productUpdated,{new:true});
-  console.log(productList);
-  res.json({productList});
- }
- catch(e){
-  res.status(400).json({error:"Backend wrong"});
-}});
+router.route("/update/:id").put(async (req, res) => {
+  try {
+    const productListId = req.params.id;
+    const productList = await Claims.findOneAndUpdate(
+      { _id: productListId },
+      req.body.productUpdated,
+      { new: true }
+    );
+
+    res.json({ productList });
+  } catch (e) {
+    res.status(400).json({ error: "Backend wrong" });
+  }
+});
 
 module.exports = router;

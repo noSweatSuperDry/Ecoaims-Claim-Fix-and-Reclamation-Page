@@ -5,26 +5,20 @@ import Axios from "axios";
 function ListItem({ productList }) {
   const [isToggled, setIsToggled] = useState(true);
   const [productUpdated, setProductUpdated] = useState({});
-  console.log(productUpdated);
+
   const handleToggle = () => {
     setIsToggled(!isToggled);
     console.log(isToggled);
   };
-  const updateProductName = async (id) => {
-    await Axios.put(`http://localhost:5001/claims/update/${id}`, {
-      id: id, // use the productId state variable here
-      productName: productUpdated.productName,
-      productSerialNumber: productUpdated.productSerialNumber,
-      issueDate: productUpdated.issueDate,
+  const handleUpdateProduct = async (id) => {
+    await Axios.put(`http://localhost:5001/reclamation/update/${id}`, {
+      productUpdated,
     })
-      .then(() => {
-        console.log(
-          "Product name updated successfully with" +
-            JSON.stringify(productUpdated)
-        );
+      .then((response) => {
+        console.log(response.data);
       })
       .catch((error) => {
-        console.error("Error updating product name:", error);
+        console.error("Error updating :" + error);
       });
   };
 
@@ -209,7 +203,7 @@ function ListItem({ productList }) {
                 className="data"
                 defaultValue={val.userNameR}
                 type="text"
-                name="whatIsTheCause"
+                name="userNameR"
                 onChange={handleInputChange}
               />
             )}
@@ -221,8 +215,7 @@ function ListItem({ productList }) {
               <button
                 className="idPassCard"
                 onClick={() => {
-                  updateProductName(val._id);
-                  window.location.reload();
+                  handleUpdateProduct(val._id);
                 }}
               >
                 Save Changes
