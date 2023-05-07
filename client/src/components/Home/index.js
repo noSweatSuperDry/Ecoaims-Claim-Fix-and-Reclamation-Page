@@ -10,12 +10,12 @@ function Home() {
   return (
     <div>
       <BrowserRouter>
-        <h2>Welcome</h2>
+        <h2>Welcome, {sessionStorage.getItem("globalId")}</h2>
         <div className="navBar">
           <NavLink to="/">
             <button className="idPassCard">Claims and Fixes</button>
           </NavLink>
-          
+
           <NavLink to="/search">
             <button className="idPassCard"> Search Claim DataBase</button>
           </NavLink>
@@ -23,7 +23,7 @@ function Home() {
             <button className="idPassCard"> Internal Reclamations</button>
           </NavLink>
           <NavLink to="/reclamationsearch">
-            <button className="idPassCard"> Search Reclamation DataBase </button>
+            <button className="idPassCard">Search Reclamation DataBase </button>
           </NavLink>
           <LogOut />
         </div>
@@ -31,7 +31,11 @@ function Home() {
           <Route exact path="/" element={<Claim />} />
           <Route exact path="/reclamation" element={<Reclamation />} />
           <Route exact path="/search" element={<Search />} />
-          <Route exact path="/reclamationsearch" element={<ReclamationSearch />} />
+          <Route
+            exact
+            path="/reclamationsearch"
+            element={<ReclamationSearch />}
+          />
         </Routes>
       </BrowserRouter>
     </div>
