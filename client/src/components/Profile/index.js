@@ -20,8 +20,9 @@ function Profile() {
     await Axios.put(`http://localhost:5001/users/update/${id}`, {
       userUpdated,
     })
-      .then(() => {
+      .then((res) => {
         setSuccess("Password Change Successful");
+        console.log(res.data);
       })
       .catch((error) => {
         setSuccess("Password Change Successful");
@@ -64,14 +65,18 @@ function Profile() {
             onChange={handleInputChange}
           ></input>
           <button
+            className="disabled"
             onClick={() => {
               handleUpdateProduct(id);
-              window.location.reload();
             }}
           >
             Change
           </button>
-          {!success && <p>{success}</p>}
+          {!success ? (
+            <p>Press Change</p>
+          ) : (
+            <p style={{ color: "blue" }}>{success}</p>
+          )}
         </h1>
       </div>
       <div className="flowright">
