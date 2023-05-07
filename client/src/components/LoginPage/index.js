@@ -39,10 +39,7 @@ export default function LoginPage({ setToken }) {
         const token = inputArray.join("");
         setToken(token);
         // Store the globalId value in the session storage
-        sessionStorage.setItem(
-          "globalId",
-          JSON.stringify(response.data[0].username)
-        );
+        sessionStorage.setItem("globalId", response.data[0].username);
       })
       .catch((error) => {
         console.log("Error: " + error);
