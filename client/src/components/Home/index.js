@@ -5,6 +5,7 @@ import Reclamation from "../Reclamation";
 import Search from "../Search";
 import LogOut from "../LogOut";
 import ReclamationSearch from "../ReclamationSearch";
+import Profile from "../Profile";
 
 function Home() {
   return (
@@ -25,6 +26,9 @@ function Home() {
           <NavLink to="/reclamationsearch">
             <button className="idPassCard">Search Reclamation DataBase </button>
           </NavLink>
+          <NavLink to="/profile">
+            <button className="idPassCard">Profile</button>
+          </NavLink>
           <LogOut />
         </div>
         <Routes>
@@ -36,6 +40,7 @@ function Home() {
             path="/reclamationsearch"
             element={<ReclamationSearch />}
           />
+          <Route exact path="/profile" element={<Profile />} />
         </Routes>
       </BrowserRouter>
     </div>

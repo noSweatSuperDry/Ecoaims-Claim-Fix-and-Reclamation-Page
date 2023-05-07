@@ -30,4 +30,20 @@ router.route("/add").post((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+//UPDATE DATA
+router.route("/update/:id").put(async (req, res) => {
+  try {
+    const userUpdate = req.params.id;
+    console.log(userUpdate);
+    const userInfo = await User.findOneAndUpdate(
+      { _id: userUpdate },
+      req.body.userUpdated,
+      { new: true }
+    );
+    res.json({ userInfo });
+  } catch (e) {
+    res.status(400).json({ error: "Backend wrong" });
+  }
+});
+
 module.exports = router;
