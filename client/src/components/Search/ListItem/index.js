@@ -5,20 +5,21 @@ import Axios from "axios";
 function ListItem({ productList }) {
   const [isToggled, setIsToggled] = useState(true);
   const [productUpdated, setProductUpdated] = useState({});
-console.log(productList);
-console.log(productUpdated);
+  console.log(productList);
+  console.log(productUpdated);
   const handleToggle = () => {
     setIsToggled(!isToggled);
     console.log(isToggled);
   };
-  const handleUpdateProduct =async (id) => {
-   await Axios
-      .put(`http://localhost:5001/claims/update/${id}`, {productUpdated})
+  const handleUpdateProduct = async (id) => {
+    await Axios.put(`http://localhost:5001/claims/update/${id}`, {
+      productUpdated,
+    })
       .then((response) => {
         console.log(response.data);
       })
       .catch((error) => {
-        console.error("Error updating :"+error);
+        console.error("Error updating :" + error);
       });
   };
 
@@ -60,7 +61,6 @@ console.log(productUpdated);
                 defaultValue={val.productName}
                 type="text"
                 name="productName"
-                
                 onChange={handleInputChange}
               />
             )}
@@ -71,7 +71,6 @@ console.log(productUpdated);
               <input
                 className="data"
                 defaultValue={val.productSerialNumber}
-                
                 type="text"
                 name="productSerialNumber"
                 onChange={handleInputChange}
@@ -85,7 +84,6 @@ console.log(productUpdated);
               <input
                 className="data"
                 defaultValue={val.issueDate}
-                
                 type="Date"
                 name="issueDate"
                 onChange={handleInputChange}
@@ -98,7 +96,6 @@ console.log(productUpdated);
               <input
                 className="data"
                 defaultValue={val.repairDate}
-               
                 type="Date"
                 name="repairDate"
                 onChange={handleInputChange}
@@ -111,7 +108,6 @@ console.log(productUpdated);
               <input
                 className="data"
                 defaultValue={val.manufacturingDate}
-                
                 type="Date"
                 name="manufacturingDate"
                 onChange={handleInputChange}
@@ -124,7 +120,6 @@ console.log(productUpdated);
               <input
                 className="data"
                 defaultValue={val.pcbModelNo}
-               
                 type="text"
                 name="pcbModelNo"
                 onChange={handleInputChange}
@@ -137,7 +132,6 @@ console.log(productUpdated);
               <input
                 className="data"
                 defaultValue={val.laserSerialNumber}
-                
                 type="text"
                 name="laserSerialNumber"
                 onChange={handleInputChange}
@@ -150,7 +144,6 @@ console.log(productUpdated);
               <input
                 className="data"
                 defaultValue={val.lemonSoftIssueNumber}
-              
                 type="text"
                 name="lemonSoftIssueNumber"
                 onChange={handleInputChange}
@@ -163,7 +156,6 @@ console.log(productUpdated);
               <input
                 className="data"
                 defaultValue={val.country}
-              
                 type="text"
                 name="country"
                 onChange={handleInputChange}
@@ -172,12 +164,11 @@ console.log(productUpdated);
 
             <p className="title">Report by Customer: </p>
             {isToggled ? (
-              <p className="data">{val.productSerialNumber} </p>
+              <p className="data">{val.reportByCustomer} </p>
             ) : (
               <input
                 className="data"
                 defaultValue={val.reportByCustomer}
-            
                 type="text"
                 name="reportByCustomer"
                 onChange={handleInputChange}
@@ -190,7 +181,6 @@ console.log(productUpdated);
               <input
                 className="data"
                 defaultValue={val.reportByEcoaims}
-             
                 type="text"
                 name="reportByEcoaims"
                 onChange={handleInputChange}
@@ -203,7 +193,6 @@ console.log(productUpdated);
               <input
                 className="data"
                 defaultValue={val.causeKnown}
-              
                 type="text"
                 name="causeKnown"
                 onChange={handleInputChange}
@@ -216,7 +205,6 @@ console.log(productUpdated);
               <input
                 className="data"
                 defaultValue={val.whatIsTheCause}
-           
                 type="text"
                 name="whatIsTheCause"
                 onChange={handleInputChange}
@@ -229,7 +217,6 @@ console.log(productUpdated);
               <input
                 className="data"
                 defaultValue={val.Conclusion}
-            
                 type="text"
                 name="Conclusion"
                 onChange={handleInputChange}
@@ -242,7 +229,6 @@ console.log(productUpdated);
               <input
                 className="data"
                 defaultValue={val.whatMsgToCustomer}
-               
                 type="text"
                 name="whatMsgToCustomer"
                 onChange={handleInputChange}
@@ -255,7 +241,6 @@ console.log(productUpdated);
               <input
                 className="data"
                 defaultValue={val.componentsUsedInRepair}
-               
                 type="text"
                 name="componentsUsedInRepair"
                 onChange={handleInputChange}
@@ -268,7 +253,6 @@ console.log(productUpdated);
               <input
                 className="data"
                 defaultValue={val.userName}
-               
                 type="text"
                 name="userName"
                 onChange={handleInputChange}
@@ -277,21 +261,25 @@ console.log(productUpdated);
             <button onClick={handleToggle} className="idPassCard">
               {!isToggled ? "Cancel Edit" : "Edit"}
             </button>
-            {!isToggled && (<button
-              className="idPassCard"
-              onClick={() => {handleUpdateProduct(val._id);
-              setIsToggled(true);
-              }}
-            >
-              Save Changes
-            </button>)}
-            {isToggled && (<button
-              onClick={() => handleDelete(val._id)
-              }
-              className="idPassCard"
-            >
-              Delete
-            </button>)}
+            {!isToggled && (
+              <button
+                className="idPassCard"
+                onClick={() => {
+                  handleUpdateProduct(val._id);
+                  setIsToggled(true);
+                }}
+              >
+                Save Changes
+              </button>
+            )}
+            {isToggled && (
+              <button
+                onClick={() => handleDelete(val._id)}
+                className="idPassCard"
+              >
+                Delete
+              </button>
+            )}
           </div>
         );
       })}
