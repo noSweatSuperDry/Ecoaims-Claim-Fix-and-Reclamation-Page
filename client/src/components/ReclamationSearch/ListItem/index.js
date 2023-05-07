@@ -216,6 +216,7 @@ function ListItem({ productList }) {
                 className="idPassCard"
                 onClick={() => {
                   handleUpdateProduct(val._id);
+                  setIsToggled(true);
                 }}
               >
                 Save Changes
