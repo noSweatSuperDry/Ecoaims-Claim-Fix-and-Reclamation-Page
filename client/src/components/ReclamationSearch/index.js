@@ -6,14 +6,17 @@ import ToggleButton from "./ToggleButton";
 
 function Search() {
   const [productList, setProductList] = useState([]);
-
   useEffect(() => {
-    Axios.get("http://localhost:5001/reclamation/all")
+    getData();
+  }, []);
+
+  async function getData() {
+    await Axios.get("http://localhost:5001/claims/all")
       .then((response) => {
         setProductList(response.data);
       })
       .catch((res) => alert(res));
-  }, []);
+  }
 
   return (
     <div className="pageOutlet" style={{ height: "fit-content" }}>
