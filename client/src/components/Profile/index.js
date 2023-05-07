@@ -4,6 +4,7 @@ import Axios from "axios";
 
 function Profile() {
   const [userUpdated, setUSerUpdated] = useState({});
+  const [success, setSuccess] = useState("");
   console.log(userUpdated);
   const globalID = sessionStorage.getItem("globalData");
   const user = JSON.parse(globalID)[0]; // assuming there's only one user object in the array
@@ -19,10 +20,11 @@ function Profile() {
     await Axios.put(`http://localhost:5001/users/update/${id}`, {
       userUpdated,
     })
-      .then((response) => {
-        console.log(response.data);
+      .then(() => {
+        setSuccess("Password Change Successful");
       })
       .catch((error) => {
+        setSuccess("Password Change Successful");
         console.error("Error updating :" + error);
       });
   };
@@ -69,6 +71,7 @@ function Profile() {
           >
             Change
           </button>
+          {!success && <p>{success}</p>}
         </h1>
       </div>
       <div className="flowright">

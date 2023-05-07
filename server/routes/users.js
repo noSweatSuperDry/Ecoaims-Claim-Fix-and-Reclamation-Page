@@ -34,7 +34,6 @@ router.route("/add").post((req, res) => {
 router.route("/update/:id").put(async (req, res) => {
   try {
     const userUpdate = req.params.id;
-    console.log(userUpdate);
     const userInfo = await User.findOneAndUpdate(
       { _id: userUpdate },
       req.body.userUpdated,
