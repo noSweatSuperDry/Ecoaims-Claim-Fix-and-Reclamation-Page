@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import "../../css/App.css";
-function Register({ onBackToLogin }) {
+import "./index.css";
 
+function Register({ onBackToLogin }) {
   const [userCredential, setUserCredential] = useState({});
-  const [success, setSuccess] = useState('');
+  const [success, setSuccess] = useState("");
   console.log(userCredential);
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -14,66 +15,112 @@ function Register({ onBackToLogin }) {
     }));
   };
 
-
   const handleSubmit = async () => {
-    await Axios.post("http://localhost:5001/users/add", { userCredential: userCredential }).then(() => {
-      setSuccess("sucessfuly Added");
-
-    }).catch(() => {
-      alert("Failed!")
+    await Axios.post("http://localhost:5001/users/add", {
+      userCredential: userCredential,
     })
+      .then(() => {
+        setSuccess("sucessfuly Added");
+      })
+      .catch(() => {
+        alert("Failed!");
+      });
   };
 
   return (
     <div>
-      {!success ? (<div className="pageOutlet">
-        <h2>Report Claims and Fixes Here.</h2>
-        <p>
-          Register your user ID. Remember! You should provide your Email address to Register.
-        </p>
+      {!success ? (
+        <div className="pageOutlet">
+          <h2>Report Claims and Fixes Here.</h2>
+          <p>
+            Register your user ID. Remember! You should provide your Email
+            address to Register.
+          </p>
 
-        <div className="textAndButton">
-          <label>User ID (maximum 8 chars/minimum 3 chars): </label>
-          <input
-            type="text"
-            name="username"
-            onChange={handleInputChange}
-            required
-          />
+          <div className="textAndButton">
+            <label>First Name </label>
+            <input
+              className="input-box"
+              type="text"
+              name="firstName"
+              onChange={handleInputChange}
+              required
+            />
+            <br />
+            <label>Last Name </label>
+            <input
+              className="input-box"
+              type="text"
+              name="lastName"
+              onChange={handleInputChange}
+              required
+            />
+            <br />
+            <label>User ID (maximum 8 chars/minimum 3 chars): </label>
+            <input
+              className="input-box"
+              type="text"
+              name="username"
+              onChange={handleInputChange}
+              required
+            />
+            <br />
+            <label>Set a new password: </label>
+            <input
+              className="input-box"
+              type="text"
+              name="userPassword"
+              onChange={handleInputChange}
+              required
+            />
+            <br />
+            <label>Email address: </label>
+            <input
+              className="input-box"
+              id="emailAddress"
+              type="email"
+              name="userEmail"
+              placeholder="username@domain.com"
+              pattern=".+@domain\.com"
+              onChange={handleInputChange}
+              required
+            />
+            <br />
+
+            <label for="terms-checkbox">
+              {" "}
+              <input type="checkbox" id="terms-checkbox" required />
+              Yes, I agree to send my information and register in Ecoaims
+              Assembly Database.
+            </label>
+
+            <br />
+
+            <button className="idPassCard" type="submit" onClick={handleSubmit}>
+              Submit
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div
+          className="loginForm pageOutlet"
+          style={{ margin: "auto", marginTop: "2cm" }}
+        >
+          <h1>UserID: {userCredential.username} Added</h1>
           <br />
-          <label>Set a new password: </label>
-          <input
-            type="text"
-            name="userPassword"
-            onChange={handleInputChange}
-            required
-          />
-          <br />
-          <label>Email address: </label>
-          <input
-            id="emailAddress"
-            type="email"
-            name="userEmail"
-            placeholder="username@domain.com"
-            pattern=".+@domain\.com"
-            onChange={handleInputChange}
-            required
-          />
-          <br />
-
-
-          <label for="terms-checkbox"> <input type="checkbox" id="terms-checkbox" required />Yes, I agree to send my information and register in Ecoaims Assembly Database.</label>
-
-          <br />
-
-          <button className="idPassCard" type="submit" onClick={handleSubmit}>
-            Submit
+          <button
+            className="idPassCard"
+            onClick={() => {
+              setSuccess("");
+            }}
+          >
+            Add Another
           </button>
         </div>
-      </div>) : (<div className="loginForm pageOutlet" style={{ margin: "auto", marginTop: "2cm" }}><h1>UserID: {userCredential.username} Added</h1><br /><button className="idPassCard" onClick={() => {
-        setSuccess("");
-      }}>Add Another</button></div>)}
-      <button className="idPassCard" onClick={onBackToLogin}>Back</button>
+      )}
+      <button className="idPassCard" onClick={onBackToLogin}>
+        Back
+      </button>
     </div>
   );
 }
