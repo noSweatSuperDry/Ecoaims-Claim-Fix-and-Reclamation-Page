@@ -7,7 +7,7 @@ require("dotenv").config();
 
 const ecoaimsServiceApp = express();
 const port = process.env.PORT || 5001;
-
+const URI = process.env.CYCLIC_URL;
 ecoaimsServiceApp.use(express.json());
 ecoaimsServiceApp.use(cors());
 //CONNECT MONGODB
@@ -44,6 +44,6 @@ function startApp() {
 */
 
 //APP LISTEN PORT
-ecoaimsServiceApp.listen(port, () => {
+ecoaimsServiceApp.listen(URI, () => {
   console.log("Server running on port: " + port);
 });
