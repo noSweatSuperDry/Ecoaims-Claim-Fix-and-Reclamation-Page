@@ -1,6 +1,9 @@
 # EcoaimsClaimFixAndReclamations
 This is a CRUD project to complete Degree of Riveria
-
+Used framework: React [axios, 
+Backend: Express, Node js
+Database:MongoDB
+Testing API: Postman(windows)/Insomnia(macOS)
 How to install:
 
 1. Go to server folder and run scripts.
