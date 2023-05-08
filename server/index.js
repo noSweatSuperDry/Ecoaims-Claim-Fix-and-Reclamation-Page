@@ -30,8 +30,8 @@ const connectMongoDB = async () => {
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGODB_URI);
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log(`MongoDB Connected`);
   } catch (error) {
     console.log(error);
     process.exit(1);
@@ -62,19 +62,11 @@ function startApp() {
 }
 */
 
-//APP LISTEN PORT
-/*connectMongoDB().then(() => {
-  {
-    const PORT = process.env.PORT || 5001;
-    ecoaimsServiceApp.listen(PORT, () => {
-      console.log("Server running on PORT: " + PORT);
-    });
-  }
-});
-*/
+//APP LISTEN PORT Call MongoDB and then listen
+
 connectDB().then(() => {
   const PORT = process.env.PORT || 5001;
   ecoaimsServiceApp.listen(PORT, () => {
-    console.log("listening for requests" + PORT);
+    console.log("Listening for requests from Port: http://localhost:" + PORT);
   });
 });
