@@ -10,7 +10,7 @@ const ecoaimsServiceApp = express();
 ecoaimsServiceApp.use(express.json());
 ecoaimsServiceApp.use(cors());
 //CONNECT MONGODB
-
+/*
 const uriMongodB = process.env.MONGODB_URI;
 const connectMongoDB = async () => {
   try {
@@ -24,6 +24,17 @@ const connectMongoDB = async () => {
     });
   } catch (e) {
     console.log(e);
+  }
+};
+*/
+
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(process.env.MONGODB_URI);
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
   }
 };
 
@@ -52,11 +63,18 @@ function startApp() {
 */
 
 //APP LISTEN PORT
-connectMongoDB().then(() => {
+/*connectMongoDB().then(() => {
   {
     const PORT = process.env.PORT || 5001;
     ecoaimsServiceApp.listen(PORT, () => {
       console.log("Server running on PORT: " + PORT);
     });
   }
+});
+*/
+connectDB().then(() => {
+  const PORT = process.env.PORT || 5001;
+  ecoaimsServiceApp.listen(PORT, () => {
+    console.log("listening for requests" + PORT);
+  });
 });
