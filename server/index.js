@@ -15,7 +15,7 @@ ecoaimsServiceApp.use(cors());
 const uriMongodB = process.env.MONGODB_URI;
 const connectMongoDB = async () => {
   try {
-    mongoose.connect(uriMongodB, {
+    await mongoose.connect(uriMongodB, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
