@@ -44,6 +44,6 @@ function startApp() {
 */
 
 //APP LISTEN PORT
-ecoaimsServiceApp.listen(process.env.PORT, () => {
+ecoaimsServiceApp.listen(port, () => {
   console.log("Server running on port: " + port);
 });
