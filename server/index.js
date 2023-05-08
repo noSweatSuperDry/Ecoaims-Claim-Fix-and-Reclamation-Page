@@ -6,18 +6,27 @@ const cors = require("cors");
 require("dotenv").config();
 
 const ecoaimsServiceApp = express();
-const port = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5001;
 const URI = process.env.CYCLIC_URL;
 ecoaimsServiceApp.use(express.json());
 ecoaimsServiceApp.use(cors());
 //CONNECT MONGODB
 
-const uri = process.env.MONGODB_URI;
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-const connection = mongoose.connection;
-connection.once("open", () => {
-  console.log("Mongdb database initiated and connected successfully");
-});
+const uriMongodB = process.env.MONGODB_URI;
+const connectMongoDB = async () => {
+  try {
+    mongoose.connect(uriMongodB, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    const connection = mongoose.connection;
+    connection.once("open", () => {
+      console.log("Mongdb database initiated and connected successfully");
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};
 
 const claimRouter = require("./routes/claims");
 const reclamationRouter = require("./routes/reclamation");
@@ -44,6 +53,10 @@ function startApp() {
 */
 
 //APP LISTEN PORT
-ecoaimsServiceApp.listen(URI, () => {
-  console.log("Server running on port: " + URI);
+connectMongoDB().then(() => {
+  {
+    ecoaimsServiceApp.listen(PORT, () => {
+      console.log("Server running on PORT: " + PORT);
+    });
+  }
 });
