@@ -45,5 +45,5 @@ function startApp() {
 
 //APP LISTEN PORT
 ecoaimsServiceApp.listen(URI, () => {
-  console.log("Server running on port: " + port);
+  console.log("Server running on port: " + URI);
 });
