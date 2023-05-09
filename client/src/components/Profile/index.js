@@ -21,11 +21,11 @@ function Profile() {
       userUpdated,
     })
       .then((res) => {
-        setSuccess("Password Change Successful");
+        setSuccess("Password Changed Successfuly");
         console.log(res.data);
       })
       .catch((error) => {
-        setSuccess("Password Change Successful");
+        setSuccess("Can not Change Password, Pleas contact ADMIN");
         console.error("Error updating :" + error);
       });
   };
@@ -39,26 +39,26 @@ function Profile() {
   };
 
   return (
-    <div className="flowdown pageOutlet ">
-      <br />
+    <div className="profile">
+      <br/>
       <h2>User Profile:</h2>
       <div className="flowright">
-        <h1>User ID: </h1>
-        <h1>{userId}</h1>
+        <p>User ID:  </p>
+        <p>{userId}</p>
       </div>
       <div className="flowright">
-        <h1>Name</h1>
-        <h1> {firstName + " " + lastName}</h1>
-      </div>
-
-      <div className="flowright">
-        <h1>Email: </h1>
-        <h1>{userEmail}</h1>
+        <p>Name</p>
+        <p> {firstName + " " + lastName}</p>
       </div>
 
       <div className="flowright">
-        <h1>Change Password:</h1>
-        <h1>
+        <p>Email: </p>
+        <p>{userEmail}</p>
+      </div>
+
+      <div className="flowright">
+        <p>Change Password:</p>
+        <p>
           <input
             type="text"
             name="userPassword"
@@ -72,20 +72,20 @@ function Profile() {
           >
             Change
           </button>
-          {!success ? (
-            <p>Press Change</p>
+          
+        </p>{!success ? (
+            <p>Write a new password and press "Change"</p>
           ) : (
             <p style={{ color: "blue" }}>{success}</p>
           )}
-        </h1>
       </div>
       <div className="flowright">
-        <h1>Account Creation:</h1>
-        <h1>{created}</h1>
+        <p>Account Creation:</p>
+        <p>{created}</p>
       </div>
       <div className="flowright">
-        <h1>Account Last Update:</h1>
-        <h1>{updated}</h1>
+        <p>Account Last Update:</p>
+        <p>{updated}</p>
       </div>
     </div>
   );

@@ -38,6 +38,7 @@ function Register({ onBackToLogin }) {
           </p>
 
           <div className="textAndButton">
+          <form onSubmit={handleSubmit}>
             <label>First Name </label>
             <input
               className="input-box"
@@ -81,7 +82,7 @@ function Register({ onBackToLogin }) {
               type="email"
               name="userEmail"
               placeholder="username@domain.com"
-              pattern=".+@domain\.com"
+              
               onChange={handleInputChange}
               required
             />
@@ -96,9 +97,10 @@ function Register({ onBackToLogin }) {
 
             <br />
 
-            <button className="idPassCard" type="submit" onClick={handleSubmit}>
+            <button className="idPassCard" type="submit">
               Submit
             </button>
+            </form>
           </div>
         </div>
       ) : (
