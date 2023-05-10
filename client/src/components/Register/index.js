@@ -26,7 +26,7 @@ function Register({ onBackToLogin }) {
     }));
   }, [userPhoto]);
   const handleSubmit = async () => {
-    await Axios.post("http://localhost:5001/users/add", {
+    await Axios.post("https://ecoaims-crud-server.onrender.com/users/add", {
       userCredential: userCredential,
     })
       .then((res) => {

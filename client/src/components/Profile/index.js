@@ -19,9 +19,12 @@ function Profile() {
   const imageUrl = user.userPhoto;
   console.log(id);
   const handleUpdateProduct = async (id) => {
-    await Axios.put(`http://localhost:5001/users/update/${id}`, {
-      userUpdated,
-    })
+    await Axios.put(
+      `https://ecoaims-crud-server.onrender.com/users/update/${id}`,
+      {
+        userUpdated,
+      }
+    )
       .then((res) => {
         setSuccess("Password Changed Successfuly");
         console.log(res.data);

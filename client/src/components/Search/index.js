@@ -12,7 +12,7 @@ function Search() {
   }, []);
 
   async function getData() {
-    await Axios.get("http://localhost:5001/claims/all")
+    await Axios.get("https://ecoaims-crud-server.onrender.com/claims/all")
       .then((response) => {
         setProductList(response.data);
       })
