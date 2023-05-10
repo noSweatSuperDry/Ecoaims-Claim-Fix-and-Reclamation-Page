@@ -67,8 +67,8 @@ export default function LoginPage({ setToken }) {
         You can also view/update/edit/remove them.
       </h1>
       <form className="loginForm" onSubmit={handleSubmit}>
-        <label className="idPassCard">
-          Username
+        <label className="idPassCard custom">
+          Username :
           <input
             placeholder="Enter User ID"
             name="username"
@@ -76,8 +76,8 @@ export default function LoginPage({ setToken }) {
             onChange={handleInputChange}
           />
         </label>
-        <label className="idPassCard">
-          Password
+        <label className="idPassCard custom">
+          Password 
           <input
             placeholder="Enter User Password"
             type="password"

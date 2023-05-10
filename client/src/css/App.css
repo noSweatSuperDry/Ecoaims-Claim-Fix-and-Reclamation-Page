@@ -100,9 +100,11 @@
   margin: 0.3cm;
   border-radius: 10px;
   width: 200px;
-  height:70px;
+  height:60px;
 }
-
+.custom{
+height: fit-content;
+}
 .titleCard {
   justify-content: center;
   align-items: center;
