@@ -6,12 +6,15 @@ import "./index.css";
 function Register({ onBackToLogin }) {
   const [userCredential, setUserCredential] = useState({});
   const [success, setSuccess] = useState('');
+  const [imageSelected, setImageSelected] = useState();
+  const [userPhoto, setUserPhoto] = useState();
   console.log(userCredential);
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserCredential((prevData) => ({
       ...prevData,
       [name]: value,
+      userPhoto: userPhoto
     }));
   };
 
@@ -28,6 +31,17 @@ function Register({ onBackToLogin }) {
       });
   };
 
+
+  //image API
+  const uploadImage = () => {
+    const formData = new FormData()
+    formData.append("file", imageSelected)
+    formData.append("upload_preset", "ecoaimsPreset")
+    Axios.post("https://api.cloudinary.com/v1_1/ecoaimsprofile/image/upload",
+      formData).then((res) => { console.log(res.data); setUserPhoto(JSON.stringify(res.data.url)); }).catch((err) => { console.log(err); })
+    console.log(formData);
+  };
+
   return (
     <div>
       {!success ? (
@@ -40,7 +54,7 @@ function Register({ onBackToLogin }) {
           <div className="textAndButton" >
             <label>First Name </label>
             <input
-className="input-box"
+              className="input-box"
               type="text"
               name="firstName"
               onChange={handleInputChange}
@@ -49,7 +63,7 @@ className="input-box"
             <br />
             <label>Last Name </label>
             <input
-className="input-box"
+              className="input-box"
               type="text"
               name="lastName"
               onChange={handleInputChange}
@@ -58,7 +72,7 @@ className="input-box"
             <br />
             <label>User ID (maximum 10 chars/minimum 3 chars): </label>
             <input
-className="input-box"
+              className="input-box"
               type="text"
               name="username"
               onChange={handleInputChange}
@@ -67,7 +81,7 @@ className="input-box"
             <br />
             <label>Set a new password: </label>
             <input
-className="input-box"
+              className="input-box"
               type="text"
               name="userPassword"
               onChange={handleInputChange}
@@ -84,7 +98,10 @@ className="input-box"
 
               onChange={handleInputChange}
               required
-            />
+            />  <br />
+            <label>Choose a Photo and Press upload.</label> <br />
+            <input type="file" onChange={(event) => { setImageSelected(event.target.files[0]) }} />  <br />
+            <button className="idPassCard" onClick={uploadImage}>Upload Image</button>
             <br />
 
             {/* <label htmlFor="terms-checkbox">
