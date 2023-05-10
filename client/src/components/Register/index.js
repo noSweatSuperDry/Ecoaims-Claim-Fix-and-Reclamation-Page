@@ -15,12 +15,14 @@ function Register({ onBackToLogin }) {
     }));
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     await Axios.post("http://localhost:5001/users/add", {
       userCredential: userCredential,
     })
-      .then(() => {
+      .then((res) => {
         setSuccess("sucessfuly Added");
+        console.log("success"+res);
       })
       .catch(() => {
         alert("Failed!");
@@ -36,9 +38,7 @@ function Register({ onBackToLogin }) {
             Register your user ID. Remember! You should provide your Email
             address to Register.
           </p>
-
-          <div className="textAndButton">
-          <form onSubmit={handleSubmit}>
+          <form className="textAndButton" onSubmit={handleSubmit}>
             <label>First Name </label>
             <input
               className="input-box"
@@ -88,8 +88,7 @@ function Register({ onBackToLogin }) {
             />
             <br />
 
-            <label for="terms-checkbox">
-              {" "}
+            <label htmlFor="terms-checkbox">
               <input type="checkbox" id="terms-checkbox" required />
               Yes, I agree to send my information and register in Ecoaims
               Assembly Database.
@@ -101,7 +100,6 @@ function Register({ onBackToLogin }) {
               Submit
             </button>
             </form>
-          </div>
         </div>
       ) : (
         <div
