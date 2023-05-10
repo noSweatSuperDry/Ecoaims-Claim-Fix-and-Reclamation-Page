@@ -11,9 +11,12 @@ function ListItem({ productList }) {
     console.log(isToggled);
   };
   const handleUpdateProduct = async (id) => {
-    await Axios.put(`http://localhost:5001/reclamation/update/${id}`, {
-      productUpdated,
-    })
+    await Axios.put(
+      `http://ecoaims-crud-server.onrender.com/reclamation/update/${id}`,
+      {
+        productUpdated,
+      }
+    )
       .then((response) => {
         console.log(response.data);
       })
@@ -32,7 +35,7 @@ function ListItem({ productList }) {
 
   //Delete Handler Function
   const handleDelete = (id) => {
-    Axios.delete(`http://localhost:5001/reclamation/${id}`)
+    Axios.delete(`http://ecoaims-crud-server.onrender.com/reclamation/${id}`)
       .then((response) => {
         console.log(response.data);
         // Do something after successful deletion, such as updating state or displaying a message to the user
@@ -196,9 +199,9 @@ function ListItem({ productList }) {
               />
             )}
             <p className="title">Products Reclaimed by: </p>
-          
-              <p className="data">{val.userNameR} </p>
-         
+
+            <p className="data">{val.userNameR} </p>
+
             <button onClick={handleToggle} className="idPassCard">
               {!isToggled ? "Cancel Edit" : "Edit"}
             </button>
