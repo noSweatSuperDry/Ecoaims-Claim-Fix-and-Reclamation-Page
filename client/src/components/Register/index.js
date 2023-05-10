@@ -5,7 +5,7 @@ import "./index.css";
 
 function Register({ onBackToLogin }) {
   const [userCredential, setUserCredential] = useState({});
-  const [success, setSuccess] = useState("");
+  const [success, setSuccess] = useState('');
   console.log(userCredential);
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -15,14 +15,13 @@ function Register({ onBackToLogin }) {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     await Axios.post("http://localhost:5001/users/add", {
       userCredential: userCredential,
     })
       .then((res) => {
         setSuccess("sucessfuly Added");
-        console.log("success"+res);
+        console.log("success" + res);
       })
       .catch(() => {
         alert("Failed!");
@@ -38,10 +37,10 @@ function Register({ onBackToLogin }) {
             Register your user ID. Remember! You should provide your Email
             address to Register.
           </p>
-          <form className="textAndButton" onSubmit={handleSubmit}>
+          <div className="textAndButton" >
             <label>First Name </label>
             <input
-              className="input-box"
+className="input-box"
               type="text"
               name="firstName"
               onChange={handleInputChange}
@@ -50,16 +49,16 @@ function Register({ onBackToLogin }) {
             <br />
             <label>Last Name </label>
             <input
-              className="input-box"
+className="input-box"
               type="text"
               name="lastName"
               onChange={handleInputChange}
               required
             />
             <br />
-            <label>User ID (maximum 8 chars/minimum 3 chars): </label>
+            <label>User ID (maximum 10 chars/minimum 3 chars): </label>
             <input
-              className="input-box"
+className="input-box"
               type="text"
               name="username"
               onChange={handleInputChange}
@@ -68,7 +67,7 @@ function Register({ onBackToLogin }) {
             <br />
             <label>Set a new password: </label>
             <input
-              className="input-box"
+className="input-box"
               type="text"
               name="userPassword"
               onChange={handleInputChange}
@@ -82,24 +81,24 @@ function Register({ onBackToLogin }) {
               type="email"
               name="userEmail"
               placeholder="username@domain.com"
-              
+
               onChange={handleInputChange}
               required
             />
             <br />
 
-            <label htmlFor="terms-checkbox">
+            {/* <label htmlFor="terms-checkbox">
               <input type="checkbox" id="terms-checkbox" required />
               Yes, I agree to send my information and register in Ecoaims
               Assembly Database.
-            </label>
+            </label> */}
 
             <br />
 
-            <button className="idPassCard" type="submit">
-              Submit
+            <button className="idPassCard" onClick={handleSubmit}>
+              Register
             </button>
-            </form>
+          </div>
         </div>
       ) : (
         <div
@@ -117,7 +116,8 @@ function Register({ onBackToLogin }) {
             Add Another
           </button>
         </div>
-      )}
+      )
+      }
       <button className="idPassCard" onClick={onBackToLogin}>
         Back
       </button>
