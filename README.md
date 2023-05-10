@@ -1,6 +1,7 @@
 # EcoaimsClaimFixAndReclamations
 This is a CRUD project to complete Degree of Riveria
-Used framework: React [axios, 
+Used framework: React [axios,cloudinary-react,react-navigation ]
+Used Service: Cloudinary for image API.
 Backend: Express, Node js
 Database:MongoDB
 Testing API: Postman(windows)/Insomnia(macOS)
