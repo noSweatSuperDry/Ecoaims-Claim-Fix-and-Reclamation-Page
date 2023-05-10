@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./index.css";
 import Axios from "axios";
-
+import {Image} from 'cloudinary-react';
 function Profile() {
   const [userUpdated, setUSerUpdated] = useState({});
   const [success, setSuccess] = useState("");
+  const [imageSelected, setImageSelected]= useState();
   console.log(userUpdated);
   const globalID = sessionStorage.getItem("globalData");
   const user = JSON.parse(globalID)[0]; // assuming there's only one user object in the array
@@ -35,13 +36,35 @@ function Profile() {
     setUSerUpdated((information) => ({
       ...information,
       [name]: value,
+      imageSelected:imageSelected
     }));
   };
 
+
+//image API
+const uploadImage =()=>{
+const formData = new FormData()
+formData.append("file",imageSelected)
+formData.append("upload_preset", "ecoaimsPreset")
+Axios.post("https://api.cloudinary.com/v1_1/ecoaimsprofile/image/upload",
+formData).then((res)=>{console.log(res);}).catch((err)=>{console.log(err);})
+console.log(formData);
+};
+
+
+
+
+
+
   return (
-    <div className="profile">
+    <div className="profile" >
       <br/>
       <h2>User Profile:</h2>
+      <div className="flowright">
+        <Image cloudName="ecoaimsprofile" publicId="https://res.cloudinary.com/ecoaimsprofile/image/upload/v1683718853/ipi1btn6zhgamfxrolnh.jpg"/>
+        <input type="file" onChange={(event)=>{setImageSelected(event.target.files[0])}}/>
+        <button onClick={uploadImage}>Upload Image</button>
+      </div>
       <div className="flowright">
         <p>User ID:  </p>
         <p>{userId}</p>
