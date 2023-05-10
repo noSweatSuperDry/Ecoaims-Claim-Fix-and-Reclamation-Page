@@ -165,7 +165,7 @@ function ListItem({ productList }) {
             {isToggled ? (
               <p className="data">{val.reportByCustomer} </p>
             ) : (
-              <input
+              <textarea
                 className="data"
                 defaultValue={val.reportByCustomer}
                 type="text"
@@ -177,7 +177,7 @@ function ListItem({ productList }) {
             {isToggled ? (
               <p className="data">{val.reportByEcoaims} </p>
             ) : (
-              <input
+              <textarea
                 className="data"
                 defaultValue={val.reportByEcoaims}
                 type="text"
@@ -201,7 +201,7 @@ function ListItem({ productList }) {
             {isToggled ? (
               <p className="data">{val.whatIsTheCause} </p>
             ) : (
-              <input
+              <textarea
                 className="data"
                 defaultValue={val.whatIsTheCause}
                 type="text"
@@ -213,7 +213,7 @@ function ListItem({ productList }) {
             {isToggled ? (
               <p className="data">{val.Conclusion} </p>
             ) : (
-              <input
+              <textarea
                 className="data"
                 defaultValue={val.Conclusion}
                 type="text"
@@ -225,7 +225,7 @@ function ListItem({ productList }) {
             {isToggled ? (
               <p className="data">{val.whatMsgToCustomer} </p>
             ) : (
-              <input
+              <textarea
                 className="data"
                 defaultValue={val.whatMsgToCustomer}
                 type="text"
@@ -237,7 +237,7 @@ function ListItem({ productList }) {
             {isToggled ? (
               <p className="data">{val.componentsUsedInRepair} </p>
             ) : (
-              <input
+              <textarea
                 className="data"
                 defaultValue={val.componentsUsedInRepair}
                 type="text"
@@ -246,17 +246,9 @@ function ListItem({ productList }) {
               />
             )}
             <p className="title">Repairer Name: </p>
-            {isToggled ? (
-              <p className="data">{val.userName} </p>
-            ) : (
-              <input
-                className="data"
-                defaultValue={val.userName}
-                type="text"
-                name="userName"
-                onChange={handleInputChange}
-              />
-            )}
+          
+            <p className="data">{val.userName} </p>
+          
             <button onClick={handleToggle} className="idPassCard">
               {!isToggled ? "Cancel Edit" : "Edit"}
             </button>

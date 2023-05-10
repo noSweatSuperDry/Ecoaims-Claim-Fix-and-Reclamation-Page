@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import Axios from "axios";
-
+import './index.css'
 function Claim() {
   const [productInfo, setProductInfo] = useState({});
   const [success, setSuccess] = useState('');
+  
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setProductInfo((prevProductInfo) => ({
       ...prevProductInfo,
       [name]: value,
+      userName: userData || "Unknown User",
     }));
   };
+const user= JSON.parse(sessionStorage.getItem("globalData"));
+const userData = user[0].firstName+" "+user[0].lastName;
 
   const handleSubmit = async () => {
     await Axios.post("http://localhost:5001/claims/add", { productInfo: productInfo }).then(() => {
@@ -97,14 +101,14 @@ function Claim() {
         />
         <br />
         <label>10. Report By Customer: </label>
-        <input
+        <textarea
           type="text"
           name="reportByCustomer"
           onChange={handleInputChange}
         />
         <br />
         <label>11. Report By Ecoaims: </label>
-        <input
+        <textarea
           type="text"
           name="reportByEcoaims"
           onChange={handleInputChange}
@@ -112,36 +116,30 @@ function Claim() {
         />
         <br />
         <label>12. Cause is known ? </label>
-        <input type="text" name="causeKnown" onChange={handleInputChange} />
+        <input type="" name="causeKnown" onChange={handleInputChange} />
         <br />
         <label>13. What is the cause ? </label>
-        <input type="text" name="whatIsTheCause" onChange={handleInputChange} />
+        <textarea type="text" name="whatIsTheCause" onChange={handleInputChange} />
         <br />
         <label>14. Conclusion: </label>
-        <input type="text" name="Conclusion" onChange={handleInputChange} />
+        <textarea type="text" name="Conclusion" onChange={handleInputChange} />
         <br />
         <label>15. What message sent to customer? </label>
-        <input
+        <textarea
           type="text"
           name="whatMsgToCustomer"
           onChange={handleInputChange}
         />
         <br />
         <label>16. Repaired/Changed components: </label>
-        <input
+        <textarea
           type="text"
           name="componentsUsedInRepair"
           onChange={handleInputChange}
           required
         />
         <br />
-        <label>17. Please Write your Name: </label>
-        <input
-          type="text"
-          name="userName"
-          onChange={handleInputChange}
-          required
-        />
+        <label> Claim will be sumbmitted by: {userData} </label>
         <br />
         <br />
         <button className="idPassCard" type="submit" onClick={handleSubmit}>

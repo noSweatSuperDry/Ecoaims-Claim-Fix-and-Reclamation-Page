@@ -139,7 +139,7 @@ function ListItem({ productList }) {
             {isToggled ? (
               <p className="data">{val.information} </p>
             ) : (
-              <input
+              <textarea
                 className="data"
                 defaultValue={val.information}
                 type="text"
@@ -163,7 +163,7 @@ function ListItem({ productList }) {
             {isToggled ? (
               <p className="data">{val.whatIsTheCauseR} </p>
             ) : (
-              <input
+              <textarea
                 className="data"
                 defaultValue={val.whatIsTheCauseR}
                 type="text"
@@ -175,7 +175,7 @@ function ListItem({ productList }) {
             {isToggled ? (
               <p className="data">{val.conclusionR} </p>
             ) : (
-              <input
+              <textarea
                 className="data"
                 defaultValue={val.conclusionR}
                 type="text"
@@ -187,7 +187,7 @@ function ListItem({ productList }) {
             {isToggled ? (
               <p className="data">{val.repairedChangedComponent} </p>
             ) : (
-              <input
+              <textarea
                 className="data"
                 defaultValue={val.repairedChangedComponent}
                 type="text"
@@ -195,19 +195,10 @@ function ListItem({ productList }) {
                 onChange={handleInputChange}
               />
             )}
-            <p className="title">Please Write your Name: </p>
-            {isToggled ? (
+            <p className="title">Products Reclaimed by: </p>
+          
               <p className="data">{val.userNameR} </p>
-            ) : (
-              <input
-                className="data"
-                defaultValue={val.userNameR}
-                type="text"
-                name="userNameR"
-                onChange={handleInputChange}
-              />
-            )}
-
+         
             <button onClick={handleToggle} className="idPassCard">
               {!isToggled ? "Cancel Edit" : "Edit"}
             </button>

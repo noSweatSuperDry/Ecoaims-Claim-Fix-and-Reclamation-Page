@@ -5,14 +5,17 @@ import Axios from "axios";
 function Reclamation() {
   const [reclamationInfo, setReclamationInfo] = useState({});
   const [success, setSuccess] = useState('');
+  console.log(JSON.stringify(reclamationInfo));
   const handleInputChangeR = (event) => {
     const { name, value } = event.target;
     setReclamationInfo((prevReclamationInfo) => ({
       ...prevReclamationInfo,
       [name]: value,
+      userNameR: userData,
     }));
   };
-
+  const user= JSON.parse(sessionStorage.getItem("globalData"));
+  const userData = user[0].firstName+" "+user[0].lastName;
   
   const handleSubmitR = async () => {
     await Axios.post("http://localhost:5001/reclamation/add", { reclamationInfo: reclamationInfo }).then(() => {
@@ -83,7 +86,7 @@ function Reclamation() {
         />
         <br />
         <label>8. Information: </label>
-        <input
+        <textarea
           type="text"
           name="information"
           onChange={handleInputChangeR}
@@ -99,14 +102,14 @@ function Reclamation() {
         />
         <br />
         <label>10. What is the cause ? </label>
-        <input
+        <textarea
           type="text"
           name="whatIsTheCauseR"
           onChange={handleInputChangeR}
         />
         <br />
         <label>11. Conclusion ? </label>
-        <input
+        <textarea
           type="text"
           name="conclusionR"
           onChange={handleInputChangeR}
@@ -114,16 +117,10 @@ function Reclamation() {
         />
         <br />
         <label>12. Repaired/Changed components:</label>
-        <input type="text" name="repairedChangedComponent" onChange={handleInputChangeR} />
+        <textarea type="text" name="repairedChangedComponent" onChange={handleInputChangeR} />
         <br />
-        <label>13. Please Write your Name: </label>
-        <input
-          type="text"
-          name="userNameR"
-          onChange={handleInputChangeR}
-          required
-        />
-        <br />
+        <label>Reclamation will be added by: {userData} </label>
+       
         <br />
         <button className="idPassCard" type="submit" onClick={handleSubmitR}>
           Submit
