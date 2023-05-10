@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "../../css/App.css";
 import "./index.css";
-
+import { Image } from "cloudinary-react";
 function Register({ onBackToLogin }) {
   const [userCredential, setUserCredential] = useState({});
   const [success, setSuccess] = useState("");
@@ -18,7 +18,13 @@ function Register({ onBackToLogin }) {
       userPhoto: userPhoto,
     }));
   };
-
+  useEffect(() => {
+    // This code will be executed when the component is mounted
+    setUserCredential((prevData) => ({
+      ...prevData,
+      userPhoto: userPhoto,
+    }));
+  }, [userPhoto]);
   const handleSubmit = async () => {
     await Axios.post("http://localhost:5001/users/add", {
       userCredential: userCredential,
@@ -37,19 +43,18 @@ function Register({ onBackToLogin }) {
     const formData = new FormData();
     formData.append("file", imageSelected);
     formData.append("upload_preset", "ecoaimsPreset");
-    await Axios.post(
-      "https://api.cloudinary.com/v1_1/ecoaimsprofile/image/upload",
-      formData
-    )
-      .then((res) => {
-        const urlLink = res.data.url;
-        setUserPhoto(urlLink);
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    console.log(formData);
+
+    try {
+      const response = await Axios.post(
+        "https://api.cloudinary.com/v1_1/ecoaimsprofile/image/upload",
+        formData
+      );
+      const urlLink = response.data.url;
+      setUserPhoto(urlLink);
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -107,7 +112,7 @@ function Register({ onBackToLogin }) {
               placeholder="username@domain.com"
               onChange={handleInputChange}
               required
-            />{" "}
+            />
             <br />
             <label>Choose a Photo and Press upload.</label> <br />
             <input
@@ -115,11 +120,18 @@ function Register({ onBackToLogin }) {
               onChange={(event) => {
                 setImageSelected(event.target.files[0]);
               }}
-            />{" "}
+            />
             <br />
             <button className="idPassCard" onClick={uploadImage}>
               Upload Image
             </button>
+            {userPhoto && (
+              <Image
+                cloudName="ecoaimsprofile"
+                publicId={userPhoto}
+                width="200"
+              />
+            )}
             <br />
             {/* <label htmlFor="terms-checkbox">
               <input type="checkbox" id="terms-checkbox" required />
