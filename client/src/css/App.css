@@ -100,7 +100,7 @@
   margin: 0.3cm;
   border-radius: 10px;
   width: 200px;
-  height:60px;
+  height:fit-content;
 }
 .custom{
 height: fit-content;
