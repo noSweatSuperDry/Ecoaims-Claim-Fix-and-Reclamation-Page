@@ -9,6 +9,7 @@ function Register({ onBackToLogin }) {
   const [imageSelected, setImageSelected] = useState();
   const [userPhoto, setUserPhoto] = useState();
   console.log(userCredential);
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserCredential((prevData) => ({
