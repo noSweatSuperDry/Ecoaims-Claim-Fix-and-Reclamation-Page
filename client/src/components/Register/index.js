@@ -5,7 +5,7 @@ import "./index.css";
 
 function Register({ onBackToLogin }) {
   const [userCredential, setUserCredential] = useState({});
-  const [success, setSuccess] = useState('');
+  const [success, setSuccess] = useState("");
   const [imageSelected, setImageSelected] = useState();
   const [userPhoto, setUserPhoto] = useState();
   console.log(userCredential);
@@ -14,7 +14,7 @@ function Register({ onBackToLogin }) {
     setUserCredential((prevData) => ({
       ...prevData,
       [name]: value,
-      userPhoto: userPhoto
+      userPhoto: userPhoto,
     }));
   };
 
@@ -31,14 +31,23 @@ function Register({ onBackToLogin }) {
       });
   };
 
-
   //image API
-  const uploadImage = () => {
-    const formData = new FormData()
-    formData.append("file", imageSelected)
-    formData.append("upload_preset", "ecoaimsPreset")
-    Axios.post("https://api.cloudinary.com/v1_1/ecoaimsprofile/image/upload",
-      formData).then((res) => { console.log(res.data); setUserPhoto(JSON.stringify(res.data.url)); }).catch((err) => { console.log(err); })
+  const uploadImage = async () => {
+    const formData = new FormData();
+    formData.append("file", imageSelected);
+    formData.append("upload_preset", "ecoaimsPreset");
+    await Axios.post(
+      "https://api.cloudinary.com/v1_1/ecoaimsprofile/image/upload",
+      formData
+    )
+      .then((res) => {
+        const urlLink = res.data.url;
+        setUserPhoto(urlLink);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     console.log(formData);
   };
 
@@ -51,7 +60,7 @@ function Register({ onBackToLogin }) {
             Register your user ID. Remember! You should provide your Email
             address to Register.
           </p>
-          <div className="textAndButton" >
+          <div className="textAndButton">
             <label>First Name </label>
             <input
               className="input-box"
@@ -95,23 +104,28 @@ function Register({ onBackToLogin }) {
               type="email"
               name="userEmail"
               placeholder="username@domain.com"
-
               onChange={handleInputChange}
               required
-            />  <br />
-            <label>Choose a Photo and Press upload.</label> <br />
-            <input type="file" onChange={(event) => { setImageSelected(event.target.files[0]) }} />  <br />
-            <button className="idPassCard" onClick={uploadImage}>Upload Image</button>
+            />{" "}
             <br />
-
+            <label>Choose a Photo and Press upload.</label> <br />
+            <input
+              type="file"
+              onChange={(event) => {
+                setImageSelected(event.target.files[0]);
+              }}
+            />{" "}
+            <br />
+            <button className="idPassCard" onClick={uploadImage}>
+              Upload Image
+            </button>
+            <br />
             {/* <label htmlFor="terms-checkbox">
               <input type="checkbox" id="terms-checkbox" required />
               Yes, I agree to send my information and register in Ecoaims
               Assembly Database.
             </label> */}
-
             <br />
-
             <button className="idPassCard" onClick={handleSubmit}>
               Register
             </button>
@@ -133,8 +147,7 @@ function Register({ onBackToLogin }) {
             Add Another
           </button>
         </div>
-      )
-      }
+      )}
       <button className="idPassCard" onClick={onBackToLogin}>
         Back
       </button>
