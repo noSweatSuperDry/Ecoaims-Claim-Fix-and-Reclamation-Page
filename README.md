@@ -12,7 +12,7 @@ Testing API: Postman(windows)/Insomnia(macOS)
 
 ***CLIENT AND SERVER both deployed via https://render.com/***
 
-***Visit: https://ecoaims-fontend.onrender.com/***
+***Visit: https://ecoaims.onrender.com***
 
 
 # How to install:
