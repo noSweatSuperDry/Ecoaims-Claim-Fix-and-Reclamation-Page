@@ -1,6 +1,6 @@
 .pageOutlet {
   position: relative;
-  width:fit-content;
+  width: fit-content;
   padding: 2em;
   margin: 50px auto;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -99,11 +99,11 @@
   background-color: yellowgreen;
   margin: 0.3cm;
   border-radius: 10px;
-  width: 200px;
-  height:fit-content;
+  width: 160px;
+  height: fit-content;
 }
-.custom{
-height: fit-content;
+.custom {
+  height: fit-content;
 }
 .titleCard {
   justify-content: center;
@@ -125,5 +125,5 @@ button:hover {
   border-radius: 10px;
 }
 *:required {
- border-color: red;
+  border-color: red;
 }

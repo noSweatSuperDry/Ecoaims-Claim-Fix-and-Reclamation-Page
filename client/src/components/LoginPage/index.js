@@ -72,7 +72,7 @@ export default function LoginPage({ setToken }) {
       </h1>
       <form className="loginForm" onSubmit={handleSubmit}>
         <label className="idPassCard custom">
-          Username :
+          Username:
           <input
             placeholder="Enter User ID"
             name="username"
@@ -81,7 +81,7 @@ export default function LoginPage({ setToken }) {
           />
         </label>
         <label className="idPassCard custom">
-          Password
+          Password:
           <input
             placeholder="Enter User Password"
             type="password"
