@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./index.css";
 import Axios from "axios";
-
+import { Image } from "cloudinary-react";
 function Profile() {
   const [userUpdated, setUSerUpdated] = useState({});
   const [success, setSuccess] = useState("");
+
   console.log(userUpdated);
   const globalID = sessionStorage.getItem("globalData");
   const user = JSON.parse(globalID)[0]; // assuming there's only one user object in the array
@@ -15,11 +16,15 @@ function Profile() {
   const created = user.createdAt;
   const updated = user.updatedAt;
   const id = user._id;
+  const imageUrl = user.userPhoto;
   console.log(id);
   const handleUpdateProduct = async (id) => {
-    await Axios.put(`http://localhost:5001/users/update/${id}`, {
-      userUpdated,
-    })
+    await Axios.put(
+      `https://ecoaims-crud-server.onrender.com/users/update/${id}`,
+      {
+        userUpdated,
+      }
+    )
       .then((res) => {
         setSuccess("Password Changed Successfuly");
         console.log(res.data);
@@ -40,10 +45,13 @@ function Profile() {
 
   return (
     <div className="profile">
-      <br/>
+      <br />
       <h2>User Profile:</h2>
       <div className="flowright">
-        <p>User ID:  </p>
+        <Image cloudName="ecoaimsprofile" publicId={imageUrl} width="200" />
+      </div>
+      <div className="flowright">
+        <p>User ID: </p>
         <p>{userId}</p>
       </div>
       <div className="flowright">
@@ -72,12 +80,12 @@ function Profile() {
           >
             Change
           </button>
-          
-        </p>{!success ? (
-            <p>Write a new password and press "Change"</p>
-          ) : (
-            <p style={{ color: "blue" }}>{success}</p>
-          )}
+        </p>
+        {!success ? (
+          <p>Write a new password and press "Change"</p>
+        ) : (
+          <p style={{ color: "blue" }}>{success}</p>
+        )}
       </div>
       <div className="flowright">
         <p>Account Creation:</p>

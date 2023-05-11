@@ -23,7 +23,7 @@ export default function LoginPage({ setToken }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await Axios.get(
-      `http://localhost:5001/users/${userCredential.username}/${userCredential.password}`
+      `https://ecoaims-crud-server.onrender.com/users/${userCredential.username}/${userCredential.password}`
     )
       .then((response) => {
         const inputString = response.data[0]._id;
@@ -77,7 +77,7 @@ export default function LoginPage({ setToken }) {
           />
         </label>
         <label className="idPassCard custom">
-          Password 
+          Password
           <input
             placeholder="Enter User Password"
             type="password"

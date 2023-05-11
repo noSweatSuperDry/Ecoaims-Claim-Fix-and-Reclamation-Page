@@ -1,3 +1,4 @@
+const { link } = require("fs");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
@@ -37,6 +38,9 @@ const userSchema = new Schema(
       type: String,
       unique: true,
       trim: true,
+    },
+    userPhoto: {
+      type:String,
     },
   },
   {
