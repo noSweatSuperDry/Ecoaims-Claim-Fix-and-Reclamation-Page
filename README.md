@@ -1,4 +1,4 @@
-# EcoaimsClaimFixAndReclamations
+# Ecoaims Claims/Fix And Reclamations DataBase
 
 This is a CRUD project to complete Degree of Riveria
 Used framework: React [axios,cloudinary-react,react-navigation ]
