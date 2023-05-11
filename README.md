@@ -2,7 +2,7 @@
 
 This is a CRUD project to complete Degree of Riveria.
 
-Used framework: React [axios,cloudinary-react,react-navigation ]
+Used framework: React [axios,cloudinary-react,react-loading-icons etc. libries are used ]
 
 Used Service: Cloudinary for image API (https://cloudinary.com/)
 
