@@ -3,8 +3,10 @@ import PropTypes from "prop-types";
 import Axios from "axios";
 import "../../css/App.css";
 import Register from "../Register";
+import { BallTriangle } from "react-loading-icons";
 
 export default function LoginPage({ setToken }) {
+  const [isLoading, setIsLoading] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
   const [userCredential, setUserCredential] = useState({});
   const [error, setError] = useState("");
@@ -23,6 +25,7 @@ export default function LoginPage({ setToken }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     await Axios.get(
       `https://ecoaims-crud-server.onrender.com/users/${userCredential.username}/${userCredential.password}`
     )
@@ -48,6 +51,7 @@ export default function LoginPage({ setToken }) {
         setError(
           "Wrong User ID or Password. Remember! User Id and Passwords are case senstive."
         );
+        setIsLoading(false);
       });
   };
 
@@ -89,6 +93,13 @@ export default function LoginPage({ setToken }) {
             onChange={handleInputChange}
           />
         </label>
+        <br />
+        {isLoading && (
+          <div>
+            <BallTriangle stroke="yellowgreen" />
+          </div>
+        )}
+        <br />
         <div>
           <button className="idPassCard" type="submit">
             Sign In
