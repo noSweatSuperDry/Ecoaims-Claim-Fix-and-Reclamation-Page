@@ -29,7 +29,7 @@ function LogOut() {
 
   const handleSubmit = () => {
     sessionStorage.clear();
-    window.location.reload();
+    window.location.replace("/");
   };
 
   const handleConfirmLogout = () => {
