@@ -8,7 +8,16 @@ require("dotenv").config();
 const ecoaimsServiceApp = express();
 
 ecoaimsServiceApp.use(express.json());
-ecoaimsServiceApp.use(cors());
+
+// This is added when server and clients are different address/server
+const cors = require("cors");
+const corsOptions = {
+  origin: "*",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+
+ecoaimsServiceApp.use(cors(corsOptions));
 //CONNECT MONGODB
 /*
 const uriMongodB = process.env.MONGODB_URI;
