@@ -10,7 +10,7 @@ const ecoaimsServiceApp = express();
 ecoaimsServiceApp.use(express.json());
 
 // This is added when server and clients are different address/server
-const cors = require("cors");
+
 const corsOptions = {
   origin: "*",
   credentials: true, //access-control-allow-credentials:true
