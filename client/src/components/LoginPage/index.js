@@ -7,6 +7,7 @@ import Register from "../Register";
 export default function LoginPage({ setToken }) {
   const [showRegister, setShowRegister] = useState(false);
   const [userCredential, setUserCredential] = useState({});
+  const [error, setError] = useState("");
   const username = JSON.stringify(userCredential.username);
 
   const password = JSON.stringify(userCredential.password);
@@ -44,6 +45,9 @@ export default function LoginPage({ setToken }) {
       })
       .catch((error) => {
         console.log("Error: " + error);
+        setError(
+          "Wrong User ID or Password. Remember! User Id and Passwords are case senstive."
+        );
       });
   };
 
@@ -90,6 +94,7 @@ export default function LoginPage({ setToken }) {
             Sign In
           </button>
         </div>
+        {error && <p style={{ color: "red" }}>{error}</p>}
       </form>
 
       <p className="titleCard" style={{ paddingTop: "1cm" }}>
