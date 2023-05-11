@@ -155,6 +155,7 @@ function Register({ onBackToLogin }) {
             className="idPassCard"
             onClick={() => {
               setSuccess("");
+              setUserPhoto("");
             }}
           >
             Add Another
