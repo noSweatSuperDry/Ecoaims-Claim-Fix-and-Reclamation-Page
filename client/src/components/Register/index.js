@@ -3,11 +3,14 @@ import Axios from "axios";
 import "../../css/App.css";
 import "./index.css";
 import { Image } from "cloudinary-react";
+import { BallTriangle } from "react-loading-icons";
+
 function Register({ onBackToLogin }) {
   const [userCredential, setUserCredential] = useState({});
   const [success, setSuccess] = useState("");
   const [imageSelected, setImageSelected] = useState();
   const [userPhoto, setUserPhoto] = useState();
+  const [isLoading, setIsLoading] = useState(false);
   console.log(userCredential);
 
   const handleInputChange = (event) => {
@@ -26,12 +29,14 @@ function Register({ onBackToLogin }) {
     }));
   }, [userPhoto]);
   const handleSubmit = async () => {
+    setIsLoading(true);
     await Axios.post("https://ecoaims-crud-server.onrender.com/users/add", {
       userCredential: userCredential,
     })
       .then((res) => {
         setSuccess("sucessfuly Added");
         console.log("success" + res);
+        setIsLoading(false);
       })
       .catch(() => {
         alert("Failed!");
@@ -40,6 +45,7 @@ function Register({ onBackToLogin }) {
 
   //image API
   const uploadImage = async () => {
+    setIsLoading(true);
     const formData = new FormData();
     formData.append("file", imageSelected);
     formData.append("upload_preset", "ecoaimsPreset");
@@ -51,6 +57,7 @@ function Register({ onBackToLogin }) {
       );
       const urlLink = response.data.url;
       setUserPhoto(urlLink);
+      setIsLoading(false);
       console.log(response.data);
     } catch (error) {
       console.log(error);
@@ -131,6 +138,12 @@ function Register({ onBackToLogin }) {
                 publicId={userPhoto}
                 width="200"
               />
+            )}
+            <br />
+            {isLoading && (
+              <div>
+                <BallTriangle width={30} stroke="yellowgreen" />
+              </div>
             )}
             <br />
             <button className="idPassCard" onClick={handleSubmit}>

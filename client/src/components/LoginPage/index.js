@@ -96,7 +96,7 @@ export default function LoginPage({ setToken }) {
         <br />
         {isLoading && (
           <div>
-            <BallTriangle stroke="yellowgreen" />
+            <BallTriangle width={30} stroke="yellowgreen" />
           </div>
         )}
         <br />
