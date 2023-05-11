@@ -1,27 +1,35 @@
 # EcoaimsClaimFixAndReclamations
+
+***CLIENT AND SERVER both deployed via https://render.com/
+
+#***Visit: https://ecoaims-fontend.onrender.com/
+
 This is a CRUD project to complete Degree of Riveria
 Used framework: React [axios,cloudinary-react,react-navigation ]
-Used Service: Cloudinary for image API.
+Used Service: Cloudinary for image API (https://cloudinary.com/)
 Backend: Express, Node js
 Database:MongoDB
 Testing API: Postman(windows)/Insomnia(macOS)
-How to install:
+
+# How to install:
 
 1. Go to server folder and run scripts.
+
 Go to server folder
-### cd ./server
+
+```cd ./server
 Install dependencies 
-### npm install 
+```npm install 
 Start server
-### npm run devStart
+```npm run devStart
  
 Backend initiated!
 
 2. Goto client folder and run scripts
 
 Go to client folder
-### cd ./client
+``` cd ./client
 Install dependencies 
-### npm install 
+``` npm install 
 Start server
-### npm start
+``` npm start
