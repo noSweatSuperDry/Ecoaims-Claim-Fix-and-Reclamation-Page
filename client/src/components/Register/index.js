@@ -133,12 +133,6 @@ function Register({ onBackToLogin }) {
               />
             )}
             <br />
-            {/* <label htmlFor="terms-checkbox">
-              <input type="checkbox" id="terms-checkbox" required />
-              Yes, I agree to send my information and register in Ecoaims
-              Assembly Database.
-            </label> */}
-            <br />
             <button className="idPassCard" onClick={handleSubmit}>
               Register
             </button>
