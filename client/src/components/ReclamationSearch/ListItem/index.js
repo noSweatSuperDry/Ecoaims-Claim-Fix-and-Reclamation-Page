@@ -56,182 +56,185 @@ function ListItem({ productList, getData }) {
   return (
     <div className="fullPage">
       <h1>List of Claimed/Fixed/Internal Reclaimed Products</h1>
-      {productList.map((val, key) => {
-        return (
-          <div key={key} className="productCard">
-            <p className="title">Issue Date: </p>
-            {isToggled ? (
-              <p className="data">{val.issueDate} </p>
-            ) : (
-              <input
-                className="data"
-                defaultValue={val.issueDate}
-                type="date"
-                name="issueDate"
-                onChange={handleInputChange}
-              />
-            )}
-            <p className="title">Product/Part Name: </p>
-            {isToggled ? (
-              <p className="data">{val.partName} </p>
-            ) : (
-              <input
-                className="data"
-                defaultValue={val.partName}
-                type="text"
-                name="partName"
-                onChange={handleInputChange}
-              />
-            )}
-            <p className="title">Device Serial Number: </p>
-            {isToggled ? (
-              <p className="data"> {val.deviceSerialNumber} </p>
-            ) : (
-              <input
-                className="data"
-                defaultValue={val.deviceSerialNumber}
-                type="text"
-                name="deviceSerialNumber"
-                onChange={handleInputChange}
-              />
-            )}
-            <p className="title"> How many ? </p>
-            {isToggled ? (
-              <p className="data">{val.howMany} </p>
-            ) : (
-              <input
-                className="data"
-                defaultValue={val.howMany}
-                type="text"
-                name="howMany"
-                onChange={handleInputChange}
-              />
-            )}
-            <p className="title">LemonSoft Issue Number: </p>
-            {isToggled ? (
-              <p className="data">{val.lemonSoftIssueNumber} </p>
-            ) : (
-              <input
-                className="data"
-                defaultValue={val.lemonSoftIssueNumber}
-                type="text"
-                name="lemonSoftIssueNumber"
-                onChange={handleInputChange}
-              />
-            )}
-            <p className="title">Electrical component type ? </p>
-            {isToggled ? (
-              <p className="data">{val.electricalComponentType} </p>
-            ) : (
-              <input
-                className="data"
-                defaultValue={val.electricalComponentType}
-                type="text"
-                name="electricalComponentType"
-                onChange={handleInputChange}
-              />
-            )}
-            <p className="title">Mechanical component type ? </p>
-            {isToggled ? (
-              <p className="data">{val.mechanicalComponentType} </p>
-            ) : (
-              <input
-                className="data"
-                defaultValue={val.mechanicalComponentType}
-                type="text"
-                name="mechanicalComponentType"
-                onChange={handleInputChange}
-              />
-            )}
-            <p className="title"> Information: </p>
-            {isToggled ? (
-              <p className="data">{val.information} </p>
-            ) : (
-              <textarea
-                className="data"
-                defaultValue={val.information}
-                type="text"
-                name="information"
-                onChange={handleInputChange}
-              />
-            )}
-            <p className="title">Cause is known ? </p>
-            {isToggled ? (
-              <p className="data">{val.causeKnownR} </p>
-            ) : (
-              <input
-                className="data"
-                defaultValue={val.causeKnownR}
-                type="text"
-                name="causeKnownR"
-                onChange={handleInputChange}
-              />
-            )}
-            <p className="title">What is the cause ? </p>
-            {isToggled ? (
-              <p className="data">{val.whatIsTheCauseR} </p>
-            ) : (
-              <textarea
-                className="data"
-                defaultValue={val.whatIsTheCauseR}
-                type="text"
-                name="whatIsTheCauseR"
-                onChange={handleInputChange}
-              />
-            )}
-            <p className="title">Conclusion ? </p>
-            {isToggled ? (
-              <p className="data">{val.conclusionR} </p>
-            ) : (
-              <textarea
-                className="data"
-                defaultValue={val.conclusionR}
-                type="text"
-                name="conclusionR"
-                onChange={handleInputChange}
-              />
-            )}
-            <p className="title">Repaired/Changed components:</p>
-            {isToggled ? (
-              <p className="data">{val.repairedChangedComponent} </p>
-            ) : (
-              <textarea
-                className="data"
-                defaultValue={val.repairedChangedComponent}
-                type="text"
-                name="repairedChangedComponent"
-                onChange={handleInputChange}
-              />
-            )}
-            <p className="title">Products Reclaimed by: </p>
+      {productList
+        .slice()
+        .reverse()
+        .map((val, key) => {
+          return (
+            <div key={key} className="productCard">
+              <p className="title">Issue Date: </p>
+              {isToggled ? (
+                <p className="data">{val.issueDate} </p>
+              ) : (
+                <input
+                  className="data"
+                  defaultValue={val.issueDate}
+                  type="date"
+                  name="issueDate"
+                  onChange={handleInputChange}
+                />
+              )}
+              <p className="title">Product/Part Name: </p>
+              {isToggled ? (
+                <p className="data">{val.partName} </p>
+              ) : (
+                <input
+                  className="data"
+                  defaultValue={val.partName}
+                  type="text"
+                  name="partName"
+                  onChange={handleInputChange}
+                />
+              )}
+              <p className="title">Device Serial Number: </p>
+              {isToggled ? (
+                <p className="data"> {val.deviceSerialNumber} </p>
+              ) : (
+                <input
+                  className="data"
+                  defaultValue={val.deviceSerialNumber}
+                  type="text"
+                  name="deviceSerialNumber"
+                  onChange={handleInputChange}
+                />
+              )}
+              <p className="title"> How many ? </p>
+              {isToggled ? (
+                <p className="data">{val.howMany} </p>
+              ) : (
+                <input
+                  className="data"
+                  defaultValue={val.howMany}
+                  type="text"
+                  name="howMany"
+                  onChange={handleInputChange}
+                />
+              )}
+              <p className="title">LemonSoft Issue Number: </p>
+              {isToggled ? (
+                <p className="data">{val.lemonSoftIssueNumber} </p>
+              ) : (
+                <input
+                  className="data"
+                  defaultValue={val.lemonSoftIssueNumber}
+                  type="text"
+                  name="lemonSoftIssueNumber"
+                  onChange={handleInputChange}
+                />
+              )}
+              <p className="title">Electrical component type ? </p>
+              {isToggled ? (
+                <p className="data">{val.electricalComponentType} </p>
+              ) : (
+                <input
+                  className="data"
+                  defaultValue={val.electricalComponentType}
+                  type="text"
+                  name="electricalComponentType"
+                  onChange={handleInputChange}
+                />
+              )}
+              <p className="title">Mechanical component type ? </p>
+              {isToggled ? (
+                <p className="data">{val.mechanicalComponentType} </p>
+              ) : (
+                <input
+                  className="data"
+                  defaultValue={val.mechanicalComponentType}
+                  type="text"
+                  name="mechanicalComponentType"
+                  onChange={handleInputChange}
+                />
+              )}
+              <p className="title"> Information: </p>
+              {isToggled ? (
+                <p className="data">{val.information} </p>
+              ) : (
+                <textarea
+                  className="data"
+                  defaultValue={val.information}
+                  type="text"
+                  name="information"
+                  onChange={handleInputChange}
+                />
+              )}
+              <p className="title">Cause is known ? </p>
+              {isToggled ? (
+                <p className="data">{val.causeKnownR} </p>
+              ) : (
+                <input
+                  className="data"
+                  defaultValue={val.causeKnownR}
+                  type="text"
+                  name="causeKnownR"
+                  onChange={handleInputChange}
+                />
+              )}
+              <p className="title">What is the cause ? </p>
+              {isToggled ? (
+                <p className="data">{val.whatIsTheCauseR} </p>
+              ) : (
+                <textarea
+                  className="data"
+                  defaultValue={val.whatIsTheCauseR}
+                  type="text"
+                  name="whatIsTheCauseR"
+                  onChange={handleInputChange}
+                />
+              )}
+              <p className="title">Conclusion ? </p>
+              {isToggled ? (
+                <p className="data">{val.conclusionR} </p>
+              ) : (
+                <textarea
+                  className="data"
+                  defaultValue={val.conclusionR}
+                  type="text"
+                  name="conclusionR"
+                  onChange={handleInputChange}
+                />
+              )}
+              <p className="title">Repaired/Changed components:</p>
+              {isToggled ? (
+                <p className="data">{val.repairedChangedComponent} </p>
+              ) : (
+                <textarea
+                  className="data"
+                  defaultValue={val.repairedChangedComponent}
+                  type="text"
+                  name="repairedChangedComponent"
+                  onChange={handleInputChange}
+                />
+              )}
+              <p className="title">Products Reclaimed by: </p>
 
-            <p className="data">{val.userNameR} </p>
+              <p className="data">{val.userNameR} </p>
 
-            <button onClick={handleToggle} className="smallButton">
-              {!isToggled ? "Cancel Edit" : "Edit"}
-            </button>
-            {!isToggled && (
-              <button
-                className="smallButton"
-                onClick={() => {
-                  handleUpdateProduct(val._id);
-                  setIsToggled(true);
-                }}
-              >
-                Save Changes
+              <button onClick={handleToggle} className="smallButton">
+                {!isToggled ? "Cancel Edit" : "Edit"}
               </button>
-            )}
-            {isToggled && (
-              <button
-                onClick={() => handleDelete(val._id)}
-                className="smallButton"
-              >
-                Delete
-              </button>
-            )}
-          </div>
-        );
-      })}
+              {!isToggled && (
+                <button
+                  className="smallButton"
+                  onClick={() => {
+                    handleUpdateProduct(val._id);
+                    setIsToggled(true);
+                  }}
+                >
+                  Save Changes
+                </button>
+              )}
+              {isToggled && (
+                <button
+                  onClick={() => handleDelete(val._id)}
+                  className="smallButton"
+                >
+                  Delete
+                </button>
+              )}
+            </div>
+          );
+        })}
     </div>
   );
 }
