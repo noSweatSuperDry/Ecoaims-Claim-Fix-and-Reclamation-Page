@@ -20,7 +20,7 @@ Testing API: Postman(windows)/Insomnia(macOS)
 ***Visit: https://ecoaims.onrender.com***
 
 # Running on LOCALHOST: 
-In Client folder, there is a ENVIRONMENT VARIABLE FILE (.env),
+In Client folder, there is an ENVIRONMENT VARIABLE FILE (.env),
 
 change the server url string to:
 ```localhost:5001``` 
