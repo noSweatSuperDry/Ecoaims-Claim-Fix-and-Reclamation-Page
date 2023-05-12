@@ -102,6 +102,17 @@
   width: 160px;
   height: fit-content;
 }
+
+.smallButton {
+  position: relative;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  background-color: yellowgreen;
+  margin: 0.3cm;
+  border-radius: 5px;
+  width: 90px;
+  height: 50px;
+}
 .custom {
   height: fit-content;
 }
@@ -115,7 +126,7 @@
   text-transform: uppercase;
 }
 
-button:hover {
+.idPassCard:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   color: #fff;
   transition: 0.3s;

@@ -45,6 +45,7 @@ function ListItem({ productList, getData }) {
         console.log(response.data);
         // Do something after successful deletion, such as updating state or displaying a message to the user
         alert("Product Listing Deleted!");
+        getData();
       })
       .catch((error) => {
         console.error(error);
@@ -206,12 +207,12 @@ function ListItem({ productList, getData }) {
 
             <p className="data">{val.userNameR} </p>
 
-            <button onClick={handleToggle} className="idPassCard">
+            <button onClick={handleToggle} className="smallButton">
               {!isToggled ? "Cancel Edit" : "Edit"}
             </button>
             {!isToggled && (
               <button
-                className="idPassCard"
+                className="smallButton"
                 onClick={() => {
                   handleUpdateProduct(val._id);
                   setIsToggled(true);
@@ -223,7 +224,7 @@ function ListItem({ productList, getData }) {
             {isToggled && (
               <button
                 onClick={() => handleDelete(val._id)}
-                className="idPassCard"
+                className="smallButton"
               >
                 Delete
               </button>
