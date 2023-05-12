@@ -30,7 +30,7 @@ function Register({ onBackToLogin }) {
   }, [userPhoto]);
   const handleSubmit = async () => {
     setIsLoading(true);
-    await Axios.post("https://ecoaims-crud-server.onrender.com/users/add", {
+    await Axios.post(`https://${process.env.REACT_APP_SERVER_URL}/users/add`, {
       userCredential: userCredential,
     })
       .then((res) => {
@@ -52,7 +52,7 @@ function Register({ onBackToLogin }) {
 
     try {
       const response = await Axios.post(
-        "https://api.cloudinary.com/v1_1/ecoaimsprofile/image/upload",
+        `https://api.cloudinary.com/v1_1/ecoaimsprofile/image/upload`,
         formData
       );
       const urlLink = response.data.url;

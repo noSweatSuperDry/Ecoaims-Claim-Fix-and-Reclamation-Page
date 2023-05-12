@@ -17,7 +17,7 @@ function Claim() {
   const userData = user[0].firstName + " " + user[0].lastName;
 
   const handleSubmit = async () => {
-    await Axios.post("https://ecoaims-crud-server.onrender.com/claims/add", {
+    await Axios.post(`https://${process.env.REACT_APP_SERVER_URL}/claims/add`, {
       productInfo: productInfo,
     })
       .then(() => {

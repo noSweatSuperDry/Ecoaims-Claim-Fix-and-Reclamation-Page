@@ -12,7 +12,7 @@ function ListItem({ productList }) {
   };
   const handleUpdateProduct = async (id) => {
     await Axios.put(
-      `https://ecoaims-crud-server.onrender.com/reclamation/update/${id}`,
+      `https://${process.env.REACT_APP_SERVER_URL}/reclamation/update/${id}`,
       {
         productUpdated,
       }
@@ -35,7 +35,9 @@ function ListItem({ productList }) {
 
   //Delete Handler Function
   const handleDelete = (id) => {
-    Axios.delete(`https://ecoaims-crud-server.onrender.com/reclamation/${id}`)
+    Axios.delete(
+      `https://${process.env.REACT_APP_SERVER_URL}/reclamation/${id}`
+    )
       .then((response) => {
         console.log(response.data);
         // Do something after successful deletion, such as updating state or displaying a message to the user

@@ -11,7 +11,9 @@ function Search() {
   }, []);
 
   async function getData() {
-    await Axios.get("https://ecoaims-crud-server.onrender.com/reclamation/all")
+    await Axios.get(
+      `https://${process.env.REACT_APP_SERVER_URL}/reclamation/all`
+    )
       .then((response) => {
         setProductList(response.data);
       })

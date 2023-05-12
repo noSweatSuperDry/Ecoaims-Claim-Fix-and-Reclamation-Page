@@ -27,7 +27,7 @@ export default function LoginPage({ setToken }) {
     e.preventDefault();
     setIsLoading(true);
     await Axios.get(
-      `https://ecoaims-crud-server.onrender.com/users/${userCredential.username}/${userCredential.password}`
+      `https://${process.env.REACT_APP_SERVER_URL}/users/${userCredential.username}/${userCredential.password}`
     )
       .then((response) => {
         const inputString = response.data[0]._id;

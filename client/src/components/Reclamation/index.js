@@ -18,7 +18,7 @@ function Reclamation() {
 
   const handleSubmitR = async () => {
     await Axios.post(
-      "https://ecoaims-crud-server.onrender.com/reclamation/add",
+      `https://${process.env.REACT_APP_SERVER_URL}/reclamation/add`,
       { reclamationInfo: reclamationInfo }
     )
       .then(() => {

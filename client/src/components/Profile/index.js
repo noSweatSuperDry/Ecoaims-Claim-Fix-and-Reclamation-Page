@@ -20,7 +20,7 @@ function Profile() {
   console.log(id);
   const handleUpdateProduct = async (id) => {
     await Axios.put(
-      `https://ecoaims-crud-server.onrender.com/users/update/${id}`,
+      `https://${process.env.REACT_APP_SERVER_URL}/users/update/${id}`,
       {
         userUpdated,
       }

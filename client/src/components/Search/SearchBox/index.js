@@ -13,7 +13,7 @@ function SearchBox() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    Axios.get(`https://ecoaims-crud-server.onrender.com/claims/${id}`)
+    Axios.get(`https://${process.env.REACT_APP_SERVER_URL}/claims/${id}`)
       .then((response) => {
         setProduct(response.data);
         console.log("Search by LemonSoft ID Successful");
