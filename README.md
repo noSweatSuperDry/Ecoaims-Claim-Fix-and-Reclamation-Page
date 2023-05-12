@@ -23,7 +23,7 @@ Testing API: Postman(windows)/Insomnia(macOS)
 In Client folder, there is a ENVIRONMENT VARIABLE FILE (.env),
 
 change the server url string to:
-````localhost:5001``` 
+```localhost:5001``` 
 
 Assuming that you are running the server in 5001 port.
 
