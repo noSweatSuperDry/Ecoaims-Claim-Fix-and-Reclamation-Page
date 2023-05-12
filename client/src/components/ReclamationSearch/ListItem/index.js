@@ -20,7 +20,9 @@ function ListItem({ productList }) {
       .then((response) => {
         console.log(response.data);
         alert("Information Updated!");
-        window.location.reload("/reclamationsearch");
+        setTimeout(() => {
+          window.location.reload(true);
+        });
       })
       .catch((error) => {
         console.error("Error updating :" + error);
@@ -44,7 +46,9 @@ function ListItem({ productList }) {
         console.log(response.data);
         // Do something after successful deletion, such as updating state or displaying a message to the user
         alert("Product Listing Deleted!");
-        window.location.reload("/reclamationsearch");
+        setTimeout(() => {
+          window.location.reload(true);
+        });
       })
       .catch((error) => {
         console.error(error);
