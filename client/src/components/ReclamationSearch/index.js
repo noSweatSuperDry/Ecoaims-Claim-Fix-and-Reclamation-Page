@@ -22,7 +22,7 @@ function Search() {
 
   return (
     <div className="pageOutlet" style={{ height: "fit-content" }}>
-      <ToggleButton productList={productList} />
+      <ToggleButton productList={productList} getData={getData} />
     </div>
   );
 }

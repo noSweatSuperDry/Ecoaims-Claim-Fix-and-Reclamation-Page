@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../index.css";
 import Axios from "axios";
 
-function ListItem({ productList }) {
+function ListItem({ productList, getData }) {
   const [isToggled, setIsToggled] = useState(true);
   const [productUpdated, setProductUpdated] = useState({});
 
@@ -20,8 +20,10 @@ function ListItem({ productList }) {
       .then((response) => {
         console.log(response.data);
         alert("Information Updated!");
+        getData();
       })
       .catch((error) => {
+        alert("Information Update Failed!");
         console.error("Error updating :" + error);
       });
   };
