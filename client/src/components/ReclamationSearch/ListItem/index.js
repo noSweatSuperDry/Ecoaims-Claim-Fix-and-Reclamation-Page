@@ -19,6 +19,8 @@ function ListItem({ productList }) {
     )
       .then((response) => {
         console.log(response.data);
+        alert("Information Updated!");
+        window.location.reload();
       })
       .catch((error) => {
         console.error("Error updating :" + error);
