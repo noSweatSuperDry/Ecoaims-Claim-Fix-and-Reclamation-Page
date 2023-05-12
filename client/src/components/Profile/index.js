@@ -4,7 +4,6 @@ import Axios from "axios";
 import { Image } from "cloudinary-react";
 function Profile() {
   const [userUpdated, setUSerUpdated] = useState({});
-  const [success, setSuccess] = useState("");
 
   console.log(userUpdated);
   const globalID = sessionStorage.getItem("globalData");
@@ -25,12 +24,12 @@ function Profile() {
         userUpdated,
       }
     )
-      .then((res) => {
-        setSuccess("Password Changed Successfuly");
-        console.log(res.data);
+      .then(() => {
+        alert("Password Changed!!");
+        window.location.reload("/profile");
       })
       .catch((error) => {
-        setSuccess("Can not Change Password, Pleas contact ADMIN");
+        alert("Can not Change Password, Pleas contact ADMIN");
         console.error("Error updating :" + error);
       });
   };
@@ -81,11 +80,6 @@ function Profile() {
             Change
           </button>
         </p>
-        {!success ? (
-          <p>Write a new password and press "Change"</p>
-        ) : (
-          <p style={{ color: "blue" }}>{success}</p>
-        )}
       </div>
       <div className="flowright">
         <p>Account Creation:</p>
