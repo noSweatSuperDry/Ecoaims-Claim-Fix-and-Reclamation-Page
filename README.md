@@ -1,6 +1,6 @@
 # Ecoaims Claims/Fix And Reclamations DataBase
 
-This is a CRUD project to complete Degree of Riveria.
+This is a project to complete Degree of Riveria.
 
 Used framework: React [axios,cloudinary-react,react-loading-icons etc. libries are used ]
 
